@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自己分析ツール</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #4a90e2;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        h1, h2 {
+            margin-bottom: 1rem;
+        }
+
+        .question {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #3a7bc8;
+        }
+
+        #analysis-result {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 2rem;
+        }
+
+        .sample {
+            background-color: #e6f3ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>自己分析ツール</h1>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <h2>自己分析の重要性</h2>
+            <p>自己分析は、自分自身の特徴、強み、弱み、価値観を理解するプロセスです。就職活動において、自己分析は非常に重要な役割を果たします。それぞれの質問について、最初は、箇条書きでもよいので、自己分析をしてみましょう。</p>
+        </section>
+
+        <section id="analysis-form">
+            <h2>自己分析フォーム</h2>
+            <form id="self-analysis-form">
+                <div class="question">
+                    <label for="strengths">1. あなたの長所（強み）は何ですか？具体的なエピソードをあげ、内容について、詳しく作成してましょう。</label>
+                    <div class="sample">
+                        <p>文例：私の長所の一つは、<strong>リーダーシップ</strong>です。大学のサークル活動で部長を務め、毎週のミーティングを主導し、メンバーの意見を尊重しながら全体の方向性を決めました。特に、サークル内で意見が対立したときには、中立的な立場で調整を行い、全員が納得できる解決策を見つけることに成功しました。この経験から、<strong>リーダーシップ</strong>と<strong>調整能力</strong>が磨かれました。
+
+                            次に、<strong>粘り強さ</strong>です。アルバイト先のカフェで、常連客からの特別注文が多い中、注文管理システムが突然故障したことがありました。その際、冷静に対応し、手作業で全ての注文を管理することで、お客様の満足度を維持しました。結果として、顧客満足度が向上し、店長から感謝の言葉をいただきました。</p>
+                    </div>
+                    <textarea id="strengths" name="strengths" rows="6" required></textarea>
+                </div>
+
+                <div class="question">
+                    <label for="weaknesses">2. あなたの短所（弱み）は何ですか？それを克服するためにどのような努力をしていますか？</label>
+                    <div class="sample">
+                        <p>文例：私の短所は、<strong>計画性の欠如</strong>です。過去には、課題の締め切り間際になって焦ることが多く、質の低い提出物を出してしまった経験があります。この問題を克服するために、まず毎日To-Doリストを作成し、優先順位をつけてタスクを管理するようにしました。また、週末には翌週のスケジュールを見直し、無理のない計画を立てることを心がけています。さらに、タスク管理アプリを活用し、進捗状況をリアルタイムで確認できるようにすることで、<strong>計画性</strong>を向上させています。</p>
+</p>
+                    </div>
+                    <textarea id="weaknesses" name="weaknesses" rows="6" required></textarea>
+                </div>
+
+                <div class="question">
+                    <label for="experiences">3. 学生時代に最も力を入れたことは何ですか？それを通じて何を学びましたか？</label>
+                    <div class="sample">
+                        <p>文例：学生時代に最も力を入れたのは、<strong>学園祭の実行委員会活動</strong>です。私は広報担当として、SNSやポスターを通じてイベントの宣伝を行いました。特に、学園祭前の1ヶ月間は、毎日SNSでの更新を欠かさず行い、フォロワーとのインタラクションを増やすことで、イベントへの関心を高めました。この経験を通じて、<strong>チームワーク</strong>の重要性と効率的な情報発信の方法を学びました。また、イベント当日には、参加者からのフィードバックを即座に反映させることで、参加者満足度を向上させることができました。この経験から、<strong>迅速な対応力</strong>と<strong>柔軟性</strong>の大切さを実感しました。</p>
+                    </div>                 
+                    <textarea id="experiences" name="experiences" rows="6" required></textarea>
+                </div>
+
+                <div class="question">
+                    <label for="values">4. 将来のキャリアにおいて、どのような価値観を大切にしたいですか？</label>
+                    <div class="sample">
+                        <p>文例：将来のキャリアにおいて大切にしたい価値観は、<strong>「誠実さ」</strong>と<strong>「挑戦」</strong>です。常に誠実な態度で業務に取り組み、信頼関係を築くことを目指しています。例えば、インターンシップ先でのプロジェクトでは、常にオープンなコミュニケーションを心がけ、チームメンバーと信頼関係を築くことで、プロジェクトを成功させることができました。また、新しいことに挑戦し続け、自己成長を遂げたいと考えています。具体的には、新しい技術やスキルを積極的に学び、変化に柔軟に対応できるよう努めています。これにより、常に最新の知識を持って業務に臨むことができ、企業に貢献できると考えています。</p>
+                    </div>
+                    
+                    <textarea id="values" name="values" rows="6" required></textarea>
+                </div>
+
+                <div class="question">
+                    <label for="future">5. 10年後、どのような自分になっていたいですか？具体的にイメージしてください。</label>
+                    <div class="sample">
+                        <p>文例：10年後、私はグローバル企業で<strong>プロジェクトマネージャー</strong>として活躍していたいです。多国籍チームをリードし、革新的なプロジェクトを推進し、世界中の顧客に価値を提供する仕事をしていたいと考えています。具体的には、複数の国のメンバーと協力し、国際的なプロジェクトを成功させるために、<strong>異文化理解</strong>と<strong>コミュニケーション能力</strong>を駆使して調整役を務めたいと思います。また、技術的な知識とマネジメントスキルを組み合わせ、プロジェクトの目標を達成するための最適な戦略を立て、チームを導いていきたいです。このようなキャリアを通じて、社会にポジティブな影響を与え続ける存在でありたいと考えています。</p>
+                    </div>
+                    
+                    <textarea id="future" name="future" rows="6" required></textarea>
+                </div>
+                <button type="button" onclick="saveAnswers()">回答を保存する</button>
+                <button type="button" onclick="analyzeResponses()">分析結果を見る</button>
+            </form>
+        </section>
+
+        <section id="analysis-result" style="display: none;">
+            <h2>分析結果</h2>
+            <div id="result-content"></div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 自己分析ツール All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function saveAnswers() {
+            const strengths = document.getElementById('strengths').value;
+            const weaknesses = document.getElementById('weaknesses').value;
+            const experiences = document.getElementById('experiences').value;
+            const values = document.getElementById('values').value;
+            const future = document.getElementById('future').value;
+    
+            const content = `強み：\n${strengths}\n\n弱み：\n${weaknesses}\n\n学生時代の経験：\n${experiences}\n\n価値観：\n${values}\n\n10年後の目標：\n${future}`;
+    
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '自己分析回答.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    
+        function analyzeResponses() {
+            const strengths = document.getElementById('strengths').value.trim();
+            const weaknesses = document.getElementById('weaknesses').value.trim();
+            const experiences = document.getElementById('experiences').value.trim();
+            const values = document.getElementById('values').value.trim();
+            const future = document.getElementById('future').value.trim();
+    
+            let analysis = '<h3>分析結果</h3>';
+    
+            analysis += analyzeSection(strengths, '強み', ['長所', '強み', 'リーダーシップ', '調整', '粘り強さ', '成功', '評価', '経験', '能力'], 150);
+analysis += analyzeSection(weaknesses, '弱み', ['短所', '弱み', '克服', '努力', '改善', '対策', '経験', '課題', '認識', '取り組む'], 130);
+analysis += analyzeSection(experiences, '学生時代の経験', ['力を入れた', '印象', '学んだ', '成長', '経験', '活動', '成功', '結果', '取り組み', '挑戦'], 180);
+analysis += analyzeSection(values, '価値観', ['大切', '重要', '価値', '基準', '信念', '目指す', '考え', '原則', '思い'], 150);
+analysis += analyzeSection(future, '10年後の目標', ['将来', '目標', 'キャリア', '成長', '実現', '達成', '具体的', 'ビジョン', '計画'], 150);
+    
+            document.getElementById('result-content').innerHTML = analysis;
+            document.getElementById('analysis-result').style.display = 'block';
+        }
+        function analyzeSection(content, sectionTitle, keywords, lengthThreshold) {
+    let score = 0;
+
+    // 長さスコア
+    const lengthScore = Math.min(1, content.length / lengthThreshold);
+    score += lengthScore * 0.3;
+
+    // キーワードスコア
+    let keywordScore = 0;
+    for (const keyword of keywords) {
+        const regex = new RegExp(keyword, 'gi');
+        const matches = content.match(regex) || [];
+        keywordScore += Math.min(0.2, matches.length * 0.06);
+    }
+    score += keywordScore;
+
+    // 具体性スコア
+    const specificityWords = ['具体的', '例えば', 'たとえば', '経験', 'とき', '際', '成功', '結果', '実際', '取り組み'];
+    let specificityScore = 0;
+    for (const word of specificityWords) {
+        const regex = new RegExp(word, 'gi');
+        const matches = content.match(regex) || [];
+        specificityScore += matches.length * 0.06;
+    }
+    score += Math.min(0.3, specificityScore);
+
+    // 文章構造スコア
+    const sentenceCount = content.split(/[。.！？!?]/).length - 1;
+    const structureScore = Math.min(0.2, sentenceCount * 0.05);
+    score += structureScore;
+
+    // エピソードスコア
+    const episodeScore = (content.match(/ました。|です。|ます。/g) || []).length * 0.12;
+    score += Math.min(0.2, episodeScore);
+
+    const maxScore = 1.2;
+    const normalizedScore = Math.min(1, score / maxScore);
+    const scorePercentage = normalizedScore * 100;
+
+    let scoreMessage = '';
+    if (scorePercentage >= 75) {
+        scoreMessage = 'このセクションの内容は非常に充実しています。具体例や経験が適切に述べられており、素晴らしい自己分析です！';
+    } else if (scorePercentage >= 60) {
+        scoreMessage = 'このセクションの内容は良好です。具体例や経験が適切に述べられています。さらに詳細を追加するとより良くなるでしょう。';
+    } else if (scorePercentage >= 45) {
+        scoreMessage = 'このセクションの内容は基本的な要素を含んでいます。さらに具体例を追加したり、経験をより詳細に述べるとより良くなります。';
+    } else {
+        scoreMessage = 'このセクションには改善の余地があります。具体例を挙げたり、実際の経験を交えて内容を充実させましょう。';
+    }
+
+    return `<h4>${sectionTitle}</h4><p>評価スコア: ${Math.round(normalizedScore * 100) / 100}/1.00</p><p>${scoreMessage}</p>`;
+}
+    </script>
+    
+    
+</body>
+</html>

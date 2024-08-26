@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生のための就活ナビゲーター</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* 前回のCSSをここに貼り付け、以下の変更を加えます */
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #5AB9EA;
+            --background-color: #F0F2F5;
+            --text-color: #333;
+        }
+        
+        .stage-container {
+            margin-bottom: 3rem;
+        }
+
+        .stage-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid;
+        }
+
+        .tool-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-link {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            font-size: 1rem;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tool-link:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .tool-link i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        header {
+    background-color: #1A237E; /* 濃い藍色 */
+    color: white; /* テキストを白色に */
+    padding: 2rem 0; /* 上下のパディングを追加 */
+    text-align: center; /* テキストを中央揃え */
+}
+
+header h1 {
+    margin-bottom: 0.5rem; /* h1とsubtitleの間隔を調整 */
+}
+
+header .subtitle {
+    font-size: 1.2rem; /* subtitleのフォントサイズを調整 */
+}
+
+        .self-analysis { background: linear-gradient(135deg, #4A90E2, #5AB9EA); }
+        .research { background: linear-gradient(135deg, #b67e59, #ad8144); }
+        .entry { background: linear-gradient(135deg, #2ECC71, #27AE60); }
+        .interview { background: linear-gradient(135deg, #E67E22, #D35400); }
+        .post-offer { background: linear-gradient(135deg, #223fe6, hsl(242, 80%, 45%)); }
+
+        .stage-title.self-analysis { color: #dfe4eb; border-color: #4A90E2; }
+        .stage-title.research { color: #dacddf; border-color: #b68059; }
+        .stage-title.entry { color: #dbebe1; border-color: #2ECC71; }
+        .stage-title.interview { color: #e8e1db; border-color: #E67E22; }
+        .stage-title.post-offer { color: #e4d4d3; border-color: #3416c9; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>学生のための就活ナビゲーター</h1>
+        <p class="subtitle">段階的に就職活動を進めよう</p>
+    </header>
+    <main>
+        <section class="intro">
+            <h2>就職活動を成功させるためのステップ</h2>
+            <p>就職活動は段階的に進めることが大切です。各ステージで必要なスキルを身につけ、自信を持って内定獲得を目指しましょう。</p>
+        </section>
+
+        <div class="stage-container">
+            <h3 class="stage-title self-analysis">Step 1: 自己分析</h3>
+            <div class="tool-container">
+                <a href="自己分析ツール.html" class="tool-link self-analysis">
+                    <i class="fas fa-user-circle"></i>
+                    自己分析ツール<br>
+                    <small>あなたの強みと弱みを見つけましょう</small>
+                </a>
+                <a href="価値観診断.html" class="tool-link self-analysis">
+                    <i class="fas fa-heart"></i>
+                    価値観診断<br>
+                    <small>あなたが大切にしていることは何でしょうか</small>
+                </a>
+                <a href="スキルチェック.html" class="tool-link self-analysis">
+                    <i class="fas fa-check-square"></i>
+                    スキルチェック<br>
+                    <small>あなたのスキルを客観的に評価しましょう</small>
+                </a>
+            </div>
+        </div>
+
+        <div class="stage-container">
+            <h3 class="stage-title research">Step 2: 業界・企業研究</h3>
+            <div class="tool-container">
+                <a href="業界分析.html" class="tool-link research">
+                    <i class="fas fa-industry"></i>
+                    業界分析ツール<br>
+                    <small>各業界の特徴と動向を理解しましょう</small>
+                </a>
+                <a href="企業データベース.html" class="tool-link research">
+                    <i class="fas fa-building"></i>
+                    企業データベース<br>
+                    <small>気になる企業の情報を詳しく調べられます</small>
+                </a>
+                <a href="OB・OG訪問ガイド.html" class="tool-link research">
+                    <i class="fas fa-users"></i>
+                    OB・OG訪問ガイド<br>
+                    <small>先輩の体験談から生の声を聞こう</small>
+                </a>
+            </div>
+        </div>
+
+        <div class="stage-container">
+            <h3 class="stage-title entry">Step 3: エントリー準備</h3>
+            <div class="tool-container">
+                <a href="エントリーシート作成ガイド.html" class="tool-link entry">
+                    <i class="fas fa-file-alt"></i>
+                    エントリーシート作成ガイド<br>
+                    <small>魅力的なエントリーシートの書き方を学びましょう</small>
+                </a>
+                <a href="履歴書テンプレート.html" class="tool-link entry">
+                    <i class="fas fa-file-signature"></i>
+                    履歴書テンプレート<br>
+                    <small>プロフェッショナルな履歴書を作成しましょう</small>
+                </a>
+                <a href="志望動機作成支援.html" class="tool-link entry">
+                    <i class="fas fa-pencil-alt"></i>
+                    志望動機作成支援<br>
+                    <small>心に響く志望動機の書き方をマスターしよう</small>
+                </a>
+            </div>
+        </div>
+
+        <div class="stage-container">
+            <h3 class="stage-title interview">Step 4: 選考対策</h3>
+            <div class="tool-container">
+                <a href="面接シミュレーター.html" class="tool-link interview">
+                    <i class="fas fa-comments"></i>
+                    面接シミュレーター<br>
+                    <small>AI面接官と練習して自信をつけよう</small>
+                </a>
+                <a href="グループディスカッション対策.html" class="tool-link interview">
+                    <i class="fas fa-users"></i>
+                    グループディスカッション対策<br>
+                    <small>効果的な意見の出し方と協調性を学ぼう</small>
+                </a>
+                <a href="筆記試験対策.html" class="tool-link interview">
+                    <i class="fas fa-pen"></i>
+                    筆記試験対策<br>
+                    <small>SPI・一般常識試験の準備をしっかりと</small>
+                </a>
+            </div>
+        </div>
+
+        <div class="stage-container">
+            <h3 class="stage-title post-offer">Step 5: 内定後の準備</h3>
+            <div class="tool-container">
+                <a href="内定者マナー講座.html" class="tool-link post-offer">
+                    <i class="fas fa-handshake"></i>
+                    内定者マナー講座<br>
+                    <small>社会人としての基本マナーを身につけよう</small>
+                </a>
+                <a href="入社前準備チェックリスト.html" class="tool-link post-offer">
+                    <i class="fas fa-clipboard-check"></i>
+                    入社前準備チェックリスト<br>
+                    <small>入社までにすべきことを確認しましょう</small>
+                </a>
+                <a href="キャリアプランニング.html" class="tool-link post-offer">
+                    <i class="fas fa-road"></i>
+                    キャリアプランニング<br>
+                    <small>長期的なキャリアビジョンを描こう</small>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 学生のための就活ナビゲーター All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
