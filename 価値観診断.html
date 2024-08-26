@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>価値観診断</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgb(238, 243, 246);
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .value-item {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="range"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #829bbe;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #3821ba;
+        }
+        #results, #answerSection {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #d6e3ea;
+            border-radius: 4px;
+        }
+        .score-display {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .instruction {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .result-note {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+        }
+        .emphasized {
+            font-weight: bold;
+            color: #2a43be;
+        }
+        .header {
+            background-color: #2e95c8;
+            color: #eef3f3;
+            padding: 30px 0;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .header h1 {
+        margin: 0;
+        color: white; /* この行を追加または変更 */
+    }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>価値観診断</h1>
+    </div>
+    <div class="container">
+        <div class="instruction">
+            <h3>使い方説明</h3>
+            <p>1. 各価値観について、あなたにとっての重要度を1〜10のスライダーで左右に調整してください。</p>
+            <p>2. 全ての項目に回答したら、「診断結果を見る」ボタンをクリックしてください。</p>
+            <p>3. 診断結果と、それに基づいたアドバイスが表示されます。</p>
+            <p>4. 結果を踏まえて、あなたの価値観について説明文を追加記入してください。</p>
+            <p>5. 「回答を保存」ボタンで、診断結果と説明をテキストファイルとして保存できます。</p>
+        </div>
+
+        <form id="valueForm">
+            <div class="value-item">
+                <label for="achievement">達成:</label>
+                <input type="range" id="achievement" min="1" max="10" value="5">
+                <span class="score-display" id="achievementScore">5</span>
+            </div>
+            <div class="value-item">
+                <label for="growth">成長:</label>
+                <input type="range" id="growth" min="1" max="10" value="5">
+                <span class="score-display" id="growthScore">5</span>
+            </div>
+            <div class="value-item">
+                <label for="contribution">貢献:</label>
+                <input type="range" id="contribution" min="1" max="10" value="5">
+                <span class="score-display" id="contributionScore">5</span>
+            </div>
+            <div class="value-item">
+                <label for="creativity">創造性:</label>
+                <input type="range" id="creativity" min="1" max="10" value="5">
+                <span class="score-display" id="creativityScore">5</span>
+            </div>
+            <div class="value-item">
+                <label for="freedom">自由:</label>
+                <input type="range" id="freedom" min="1" max="10" value="5">
+                <span class="score-display" id="freedomScore">5</span>
+            </div>
+            <div class="value-item">
+                <label for="harmony">調和:</label>
+                <input type="range" id="harmony" min="1" max="10" value="5">
+                <span class="score-display" id="harmonyScore">5</span>
+            </div>
+            <div class="value-item">
+                <label for="stability">安定:</label>
+                <input type="range" id="stability" min="1" max="10" value="5">
+                <span class="score-display" id="stabilityScore">5</span>
+            </div>
+            <div class="value-item">
+                <label for="challenge">挑戦:</label>
+                <input type="range" id="challenge" min="1" max="10" value="5">
+                <span class="score-display" id="challengeScore">5</span>
+            </div>
+            <div class="value-item">
+                <label for="leadership">リーダーシップ:</label>
+                <input type="range" id="leadership" min="1" max="10" value="5">
+                <span class="score-display" id="leadershipScore">5</span>
+            </div>
+            <div class="value-item">
+                <label for="income">高収入を得ること:</label>
+                <input type="range" id="income" min="1" max="10" value="5">
+                <span class="score-display" id="incomeScore">5</span>
+            </div>
+            <div class="value-item">
+                <label for="recognition">承認:</label>
+                <input type="range" id="recognition" min="1" max="10" value="5">
+                <span class="score-display" id="recognitionScore">5</span>
+            </div>
+            <div class="value-item">
+                <label for="workLifeBalance">ワークライフバランス:</label>
+                <input type="range" id="workLifeBalance" min="1" max="10" value="5">
+                <span class="score-display" id="workLifeBalanceScore">5</span>
+            </div>
+            
+            <button type="submit">診断結果を見る</button>
+        </form>
+        
+        <div id="results"></div>
+
+         <h2>診断結果</h2>
+        
+        <div class="result-note">
+            <p>※ この診断結果は、あなたの回答に基づいた一般的な傾向を示すものです。個人の価値観は複雑で多面的であり、この結果だけでなく、自己分析や他者からのフィードバックなども参考にしてください。</p>
+        </div>
+        
+        <div id="answerSection" style="display: block;">
+            <h2>あなたの価値観についての説明</h2>
+            <p class="emphasized">あなたの価値観について、あなた自身の経験をもとに、面接官に伝わるようにそれぞれの価値観について、補足説明を作成するとよいでしょう。</p>
+            <textarea id="answerText" placeholder="ここにあなたの回答を入力してください"></textarea>
+        </div>
+        
+        <button id="saveButton" style="display: block;">回答を保存</button>
+    </div>
+
+    <script>
+        const valueForm = document.getElementById('valueForm');
+        const resultsDiv = document.getElementById('results');
+        const answerSection = document.getElementById('answerSection');
+        const answerText = document.getElementById('answerText');
+        const saveButton = document.getElementById('saveButton');
+
+        const valueDescriptions = {
+            '達成': {
+                low: '目標達成への意欲が低い場合、ルーチンワークや安定した環境を好む傾向があります。',
+                high: '高い目標達成意欲がある場合、営業職や起業家など、挑戦的な仕事に向いています。',
+                companies: '目標達成重視の企業：トヨタ自動車、ソニー、楽天など'
+            },
+            '成長': {
+                low: '現状維持を好む傾向があり、安定した環境での仕事に適しています。',
+                high: '常に新しいことを学びたい方は、IT業界やコンサルティング業界など、急速に変化する分野に向いています。',
+                companies: '成長重視の企業：リクルート、サイバーエージェント、メルカリなど'
+            },
+            '貢献': {
+                low: '個人の成果を重視する傾向があり、個人営業や専門職に向いています。',
+                high: '社会貢献に価値を置く方は、非営利団体や教育、医療分野での仕事に向いています。',
+                companies: '社会貢献重視の企業：ヤマト運輸、サラヤ、良品計画など'
+            },
+            '創造性': {
+                low: '既存の枠組みの中で働くことを好む傾向があり、管理職や事務職に適しています。',
+                high: '高い創造性を持つ方は、デザイン、広告、R&D部門など、革新的なアイデアが求められる職種に向いています。',
+                companies: '創造性重視の企業：任天堂、博報堂、KADOKAWA など'
+            },
+            '自由': {
+                low: '構造化された環境を好む傾向があり、大企業や公務員など、安定した職場に適しています。',
+                high: '自由を重視する方はフリーランスやリモートワーク、スタートアップ企業など、柔軟な働き方ができる環境に向いています。',
+                companies: '自由重視の企業：サイボウズ、GMOインターネット、ディー・エヌ・エーなど'
+            },
+            '調和': {
+                low: '競争的な環境を好む傾向があり、営業職や金融業界など、成果主義の強い分野に適しています。',
+                high: 'チームワークを重視する方は、チーム制の強い企業や、協調性が重要視される職種に向いています。',
+                companies: '調和重視の企業：イオン、ヤマハ、カゴメなど'
+            },
+            '安定': {
+                low: 'リスクを恐れない傾向があり、ベンチャー企業や新規事業部門など、変化の多い環境に適しています。',
+                high: '安定を求める方は、大手企業や公務員など、長期的な雇用が期待できる職場に向いています。',
+                companies: '安定重視の企業：日本郵政、JR東日本、NTTなど'
+            },
+            '挑戦': {
+                low: '安定した環境を好む傾向があり、既存の事業や確立された分野での仕事に適しています。',
+                high: '新しい挑戦を求める方は、新興企業や急成長している業界、海外展開を行う企業などに向いています。',
+                companies: '挑戦重視の企業：ソフトバンクグループ、ZOZO、ユニクロなど'
+            },
+            'リーダーシップ': {
+                low: 'チームの一員として働くことを好む傾向があり、協調性が重視される職場や専門性を活かせる職種に適しています。',
+                high: 'リーダーシップを発揮したい方は、管理職やプロジェクトマネージャー、起業家など、組織やチームを率いる立場の仕事に向いています。',
+                companies: 'リーダーシップ重視の企業：P&G、GE、マッキンゼー・アンド・カンパニーなど'
+            },
+            '高収入を得ること': {
+                low: '金銭以外の価値を重視する傾向があり、非営利団体や社会貢献度の高い職種に適しています。',
+                high: '高収入を重視する方は、投資銀行、法律事務所、技術系ベンチャー企業など、報酬の高い業界に向いています。',
+                companies: '高収入重視の企業：大手コンサルティングファーム（アクセンチュア、デロイトトーマツ）、大手法律事務所、外資系金融機関など'
+            },
+            '承認': {
+                low: '他者からの評価にあまり左右されず、独立した仕事や裏方の役割に適しています。',
+                high: '他者からの評価や認知を重視する方は、営業、マーケティング、エンターテインメント業界などの対人関係が重要な職種に向いています。',
+                companies: '承認重視の企業：電通、資生堂、ANA（全日本空輸）など'
+            },
+            'ワークライフバランス': {
+                low: '仕事に全力を注ぎたい方は、ベンチャー企業やスタートアップなど、仕事にコミットメントが求められる環境に向いています。',
+                high: 'プライベートの時間を大切にしたい方は、労働時間に配慮のある企業や、フレックスタイム制を導入している企業に向いています。',
+                companies: 'ワークライフバランス重視の企業：花王、コクヨ、NECなど'
+            }
+        };
+
+        // スライダーの値を表示する関数
+        function updateScoreDisplay(slider) {
+            const scoreDisplay = document.getElementById(slider.id + 'Score');
+            scoreDisplay.textContent = slider.value;
+        }
+
+        // 全てのスライダーに対してイベントリスナーを設定
+        document.querySelectorAll('input[type="range"]').forEach(slider => {
+            updateScoreDisplay(slider);
+            slider.addEventListener('input', () => updateScoreDisplay(slider));
+        });
+
+        function generateResults(values) {
+            let resultsHTML = '<h2>診断結果</h2>';
+            let sortedValues = Object.entries(values).sort((a, b) => b[1] - a[1]);
+            for (const [key, value] of sortedValues) {
+                const description = valueDescriptions[key];
+                if (description) {
+                    resultsHTML += `<h3>${key}: ${value}</h3>`;
+                    if (value <= 5) {
+                        resultsHTML += `<p>${description.low}</p>`;
+                    } else {
+                        resultsHTML += `<p>${description.high}</p>`;
+                    }
+                    resultsHTML += `<p><strong>関連する企業：</strong>${description.companies}</p>`;
+                }
+            }
+            return resultsHTML;
+        }
+
+        function generateSampleAnswer(topValues) {
+            let sampleAnswer = "私の価値観の中で特に重要なものは以下の3つです：\n\n";
+            topValues.forEach((value, index) => {
+                sampleAnswer += `${index + 1}. ${value[0]}：スコア ${value[1]}/10\n`;
+                sampleAnswer += `   ${valueDescriptions[value[0]][value[1] > 5 ? 'high' : 'low']}\n\n`;
+            });
+            sampleAnswer += "これらの価値観に基づいて、私は自分のキャリアを選択し、日々の仕事に取り組んでいきたいと考えています。";
+            return sampleAnswer;
+        }
+
+        valueForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const values = {
+                '達成': parseInt(document.getElementById('achievement').value),
+                '成長': parseInt(document.getElementById('growth').value),
+                '貢献': parseInt(document.getElementById('contribution').value),
+                '創造性': parseInt(document.getElementById('creativity').value),
+                '自由': parseInt(document.getElementById('freedom').value),
+                '調和': parseInt(document.getElementById('harmony').value),
+                '安定': parseInt(document.getElementById('stability').value),
+                '挑戦': parseInt(document.getElementById('challenge').value),
+                'リーダーシップ': parseInt(document.getElementById('leadership').value),
+                '高収入を得ること': parseInt(document.getElementById('income').value),
+                '承認': parseInt(document.getElementById('recognition').value),
+                'ワークライフバランス': parseInt(document.getElementById('workLifeBalance').value)
+            };
+
+            resultsDiv.innerHTML = generateResults(values);
+            answerSection.style.display = 'block';
+            saveButton.style.display = 'block';
+
+            const topValues = Object.entries(values).sort((a, b) => b[1] - a[1]).slice(0, 3);
+            answerText.value = generateSampleAnswer(topValues);
+        });
+
+        saveButton.addEventListener('click', function() {
+            const values = {
+                '達成': document.getElementById('achievement').value,
+                '成長': document.getElementById('growth').value,
+                '貢献': document.getElementById('contribution').value,
+                '創造性': document.getElementById('creativity').value,
+                '自由': document.getElementById('freedom').value,
+                '調和': document.getElementById('harmony').value,
+                '安定': document.getElementById('stability').value,
+                '挑戦': document.getElementById('challenge').value,
+                'リーダーシップ': document.getElementById('leadership').value,
+                '高収入を得ること': document.getElementById('income').value,
+                '承認': document.getElementById('recognition').value,
+                'ワークライフバランス': document.getElementById('workLifeBalance').value
+            };
+
+            let data = '価値観診断結果:\n\n';
+            for (const [key, value] of Object.entries(values)) {
+                data += `${key}: ${value}\n`;
+            }
+            data += '\n診断結果:\n' + resultsDiv.innerText;
+            data += '\n\nあなたの価値観についての説明:\n' + answerText.value;
+            
+            const blob = new Blob([data], {type: 'text/plain'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '価値観診断結果.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+    </script>
+
+</body></html>

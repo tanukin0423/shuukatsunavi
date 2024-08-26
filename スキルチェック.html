@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>総合能力診断テスト - あなたの潜在能力を発見しよう</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1{
+            color: #ffffff;
+        }
+        h2, h3 {
+            color: #2c3e50;
+        }
+        .question-block {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        .options label {
+            margin-bottom: 5px;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        #result {
+            display: none;
+        }
+        #chart {
+            max-width: 1200px; /* サイズ変更 */
+            max-height: 1200px; /* サイズ変更 */
+            margin: 20px auto;
+        }
+        #error-message {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #fadbd8;
+            border-radius: 4px;
+            display: none;
+        }
+        @media print {
+            body {
+                background-color: white;
+            }
+            button {
+                display: none;
+            }
+        }
+        h1 {
+        background-color: #3498db; /* 水色の背景 */
+        padding: 20px;
+        text-align: center; /* センタリング */
+        border-radius: 8px; /* 角を丸くする（オプション） */
+        margin-bottom: 20px; /* 下の要素との間隔を開ける */
+    }
+    </style>
+</head>
+<body>
+    <h1>スキルチェック</h1>
+    <p>以下の質問に答えて、あなたの潜在能力を発見しましょう。</p>
+
+    <div id="test"></div>
+    <button id="calculateButton">結果を見る（レーダーチヤート表示は二度クリック）</button>
+    <button id="printButton">印刷</button>
+    <div id="error-message"></div>
+
+    <div id="result">
+        <h2>あなたの能力プロファイル</h2>
+        <canvas id="chart"></canvas>
+        <div id="interpretation"></div>
+    </div>
+
+    <script>
+        const questionBlocks = [
+            { category: "論理的思考力", questions: ["複雑な問題を小さな部分に分解して考えることができる", "物事の因果関係を明確に説明できる", "データや事実に基づいて客観的に判断することができる"], jobs: ["データアナリスト", "プロジェクトマネージャー", "戦略プランナー", "リサーチャー", "システムエンジニア"] },
+            { category: "創造性", questions: ["既存の枠にとらわれない新しいアイデアを生み出すことができる", "異なる概念を組み合わせて新しい解決策を見つけることが得意だ", "常に「もっと良い方法はないか」と考える習慣がある"], jobs: ["クリエイティブディレクター", "UX/UIデザイナー", "広告プランナー", "イラストレーター", "作家"] },
+            { category: "コミュニケーション力", questions: ["自分の考えを相手に分かりやすく伝えることができる", "相手の立場に立って話を聞くことができる", "非言語コミュニケーション（表情、姿勢など）にも注意を払っている"], jobs: ["カスタマーサポート", "広報担当", "セールスマネージャー", "人事担当", "トレーナー"] },
+            { category: "リーダーシップ", questions: ["チームの目標を明確に設定し、メンバーと共有できる", "メンバーの強みを活かし、適切に役割分担ができる", "困難な状況でも冷静に判断し、チームを導くことができる"], jobs: ["プロジェクトマネージャー", "部門長", "チームリーダー", "コンサルタント", "イベントコーディネーター"] },
+            { category: "自己管理能力", questions: ["長期的な目標を立て、それに向けて計画的に行動できる", "自分の感情をコントロールし、適切に表現できる", "時間を効率的に管理し、締め切りを守ることができる"], jobs: ["アカウンタント", "プロジェクトコーディネーター", "研究者", "教育者", "エグゼクティブアシスタント"] },
+            { category: "行動力", questions: ["思い立ったらすぐに行動に移すことができる", "失敗を恐れずに新しいことにチャレンジできる", "目標達成のために粘り強く努力し続けることができる"], jobs: ["スタートアップ創業者", "セールス代表", "フィールドエンジニア", "イベントプランナー", "販売業"] },
+            { category: "課題解決力", questions: ["問題の本質を素早く見抜くことができる", "多角的な視点から解決策を考えることができる", "限られた資源の中で最適な解決策を見出すことができる"], jobs: ["ビジネスアナリスト", "プロダクトマネージャー", "戦略コンサルタント", "製品開発エンジニア", "運営管理者"] },
+            { category: "基礎学力", questions: ["数学的な考え方を日常生活の問題解決に活用できる", "社会の出来事について、背景や影響を考察することができる", "科学的な原理や法則を理解し、説明することができる"], jobs: ["データサイエンティスト", "教育者", "リサーチャー", "社会調査員", "分析化学者"] },
+            { category: "ストレス耐性", questions: ["プレッシャーがかかる状況でも冷静に対応できる", "失敗や挫折を経験しても、すぐに立ち直ることができる", "長時間の作業や困難な課題にも粘り強く取り組める"], jobs: ["救急医療スタッフ", "トレーディングアナリスト", "プロジェクトマネージャー", "カスタマーサポートリーダー", "交渉担当者"] },
+            { category: "主体性", questions: ["自分で目標を設定し、その達成に向けて自発的に行動できる", "周囲の状況に流されず、自分の意見をしっかり持つことができる", "与えられた仕事をただこなすのではなく、自ら改善点を見つけ出す"], jobs: ["起業家", "プロダクトマネージャー", "研究開発者", "コンサルタント", "チームリーダー"] }
+        ];
+
+        let radarChart = null;
+
+        function createTest() {
+            const testDiv = document.getElementById('test');
+            testDiv.innerHTML = '';
+
+            questionBlocks.forEach((block, blockIndex) => {
+                const blockDiv = document.createElement('div');
+                blockDiv.classList.add('question-block');
+                blockDiv.innerHTML = `<h2>${block.category}</h2>`;
+
+                block.questions.forEach((question, questionIndex) => {
+                    const questionDiv = document.createElement('div');
+                    questionDiv.classList.add('question');
+                    questionDiv.innerHTML = `<p>${question}</p>`;
+
+                    const optionsDiv = document.createElement('div');
+                    optionsDiv.classList.add('options');
+
+                    for (let i = 1; i <= 5; i++) {
+                        optionsDiv.innerHTML += `
+                            <label>
+                                <input type="radio" name="q${blockIndex}_${questionIndex}" value="${i}">
+                                ${i} - ${['全く当てはまらない', 'あまり当てはまらない', 'どちらともいえない', 'やや当てはまる', '非常に当てはまる'][i-1]}
+                            </label>
+                        `;
+                    }
+
+                    questionDiv.appendChild(optionsDiv);
+                    blockDiv.appendChild(questionDiv);
+                });
+
+                testDiv.appendChild(blockDiv);
+            });
+        }
+
+        function calculateResults() {
+            const errorMessageEl = document.getElementById('error-message');
+            errorMessageEl.style.display = 'none';
+
+            const results = questionBlocks.map((block, blockIndex) => {
+                const scores = block.questions.map((_, questionIndex) => {
+                    const selected = document.querySelector(`input[name="q${blockIndex}_${questionIndex}"]:checked`);
+                    if (!selected) return null;
+                    return parseInt(selected.value, 10);
+                }).filter(value => value !== null);
+
+                if (scores.length === 0) return 0; // どの質問にも回答がなかった場合のデフォルト値
+                const totalScore = scores.reduce((sum, score) => sum + score, 0);
+                return Math.floor((totalScore / scores.length) * 100) / 100; // 小数点第二位で切り捨て
+            });
+
+            const categories = questionBlocks.map(block => block.category);
+
+            if (radarChart) {
+                radarChart.destroy(); // 古いチャートを破棄
+            }
+
+            const ctx = document.getElementById('chart').getContext('2d');
+            radarChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        label: '能力スコア',
+                        data: results,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                }
+            });
+
+            const sortedResults = results.map((score, index) => ({ category: categories[index], score }))
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 3); // 上位3つの能力
+
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('interpretation').innerHTML = `
+                <h3>診断結果の解釈</h3>
+                <p>スコアが高いほど、その能力が強いことを示します。自己改善のために以下のようなアクションを考えてみましょう。</p>
+                <ul>
+                    ${sortedResults.map(result => `<li>${result.category}: ${result.score}</li>`).join('')}
+                </ul>
+                <h3>上位3つの能力に適した職種</h3>
+                ${sortedResults.map(result => `
+                    <h4>${result.category}</h4>
+                    <ul>
+                        ${questionBlocks.find(block => block.category === result.category).jobs.map(job => `<li>${job}</li>`).join('')}
+                    </ul>
+                `).join('')}
+            `;
+        }
+
+        function printResults() {
+            window.print(); // 印刷ダイアログを表示
+        }
+
+        document.getElementById('calculateButton').addEventListener('click', () => {
+            calculateResults();
+        });
+
+        document.getElementById('printButton').addEventListener('click', printResults);
+        createTest();
+    </script>
+</body>
+</html>
