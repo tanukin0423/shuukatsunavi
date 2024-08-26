@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企業データベース - 就活生のための企業情報ポータル</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5efeb;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: rgb(246, 237, 228);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .title-container {
+            background-color: #8B4513; /* 茶色 */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .title-container h1 {
+            margin: 0;
+            font-size: 2.5em;
+            color: white; /* h1要素の文字色を明示的に白に設定 */
+        }
+        .search-box {
+            margin: 20px 0;
+            padding: 15px;
+            background: #ecf0f1;
+            border-radius: 5px;
+        }
+        .search-box input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+        }
+        .search-box button {
+            padding: 10px 20px;
+            background: #db9334;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .company-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .company-item {
+            background: #fff;
+            margin-bottom: 15px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            transition: box-shadow 0.3s ease;
+        }
+        .company-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .company-item h3 {
+            margin-top: 0;
+            color: #c2a31c;
+        }
+        .company-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .company-info, .company-stats {
+            flex: 1;
+        }
+        .view-more {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background: #d3741c;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="title-container">
+        <h1>企業データベース</h1>
+    </div>
+    <div class="container">
+        <p>就活生の皆さん、ここでは様々な企業の詳細情報を検索・閲覧することができます。志望企業の選定や面接対策にお役立てください。</p>
+        
+        <div class="search-box">
+            <form action="https://www.google.com/search" method="GET">
+                <input type="text" name="q" placeholder="企業名、業界、キーワードで検索">
+                <button type="submit">検索</button>
+            </form>
+        </div>
+        
+        <h2>注目の企業</h2>
+        <ul class="company-list">
+            <li class="company-item">
+                <h3>テックイノベーション株式会社</h3>
+                <div class="company-details">
+                    <div class="company-info">
+                        <p><strong>業界:</strong> IT・通信</p>
+                        <p><strong>本社:</strong> 東京都渋谷区</p>
+                        <p><strong>従業員数:</strong> 1,500名</p>
+                    </div>
+                    <div class="company-stats">
+                        <p><strong>売上高:</strong> 500億円</p>
+                        <p><strong>平均年収:</strong> 650万円</p>
+                        <p><strong>平均勤続年数:</strong> 7.5年</p>
+                    </div>
+                </div>
+                <a href="#" class="view-more">詳細を見る</a>
+            </li>
+            <li class="company-item">
+                <h3>グローバルトレーディング株式会社</h3>
+                <div class="company-details">
+                    <div class="company-info">
+                        <p><strong>業界:</strong> 商社・卸売</p>
+                        <p><strong>本社:</strong> 大阪府大阪市</p>
+                        <p><strong>従業員数:</strong> 3,200名</p>
+                    </div>
+                    <div class="company-stats">
+                        <p><strong>売上高:</strong> 1,200億円</p>
+                        <p><strong>平均年収:</strong> 720万円</p>
+                        <p><strong>平均勤続年数:</strong> 12.3年</p>
+                    </div>
+                </div>
+                <a href="#" class="view-more">詳細を見る</a>
+            </li>
+            <!-- 他の企業も同様に追加 -->
+        </ul>
+        
+        <h2>データベースの使い方</h2>
+        <ol>
+            <li>検索ボックスを使用して、企業名、業界、またはキーワードで検索できます。</li>
+            <li>各企業の基本情報、財務データ、従業員情報などを確認できます。</li>
+            <li>「詳細を見る」をクリックすると、より詳細な企業情報、採用情報、社員の声などが表示されます。</li>
+            <li>興味のある企業はブックマークして、後で比較検討することができます。</li>
+            <li>定期的にデータベースをチェックし、最新の企業情報や求人情報を確認しましょう。</li>
+        </ol>
+        
+        <p>企業研究は就活成功の鍵です。このデータベースを活用して、自分に合った企業を見つけ、充実した就職活動を行ってください。</p>
+    </div>
+</body>
+</html>

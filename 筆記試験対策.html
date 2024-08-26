@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>筆記試験対策 - SPI・一般常識試験の準備</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f4f8;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #ffffff;
+        }
+        h2, h3 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .test-type {
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .test-type h3 {
+            color: #3498db;
+            margin-top: 0;
+        }
+        .practice-questions {
+            background-color: #fff5e6;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .question {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 15px;
+        }
+        .question:last-child {
+            border-bottom: none;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .answer {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e8f8f5;
+            border-radius: 3px;
+        }
+        .study-tips {
+            background-color: #f0fff0;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        h1 {
+        background-color: #3498db; /* 水色の背景 */
+        padding: 15px;
+        text-align: center; /* センタリング */
+        border-radius: 8px; /* 角を丸くする（オプション） */
+        margin-bottom: 20px; /* 下の要素との間隔を開ける */
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>筆記試験対策</h1>
+        <p>就職活動において、筆記試験は重要な選考ステップの一つです。SPI（Synthetic Personality Inventory）や一般常識試験の対策をしっかり行い、高得点を目指しましょう。</p>
+
+        <div class="section">
+            <h2>主な筆記試験の種類</h2>
+            
+            <div class="test-type">
+                <h3>SPI（非言語分野）</h3>
+                <ul>
+                    <li>数学的な問題解決能力を測定</li>
+                    <li>計算問題、推論問題など</li>
+                </ul>
+                <div class="practice-questions">
+                    <h4>練習問題</h4>
+                    <div class="question">
+                        <p>1. AとBの和が30で、AはBの2倍です。AとBの差は？</p>
+                        <button onclick="toggleAnswer('non-verbal-1')">答えを見る</button>
+                        <div id="non-verbal-1" class="answer">
+                            答え：10<br>
+                            解説：
+                            1. AがBの2倍なので、A = 2B と表せます。<br>
+                            2. 和が30なので、A + B = 30 という式が成り立ちます。<br>
+                            3. AをBで表すと、2B + B = 30 となります。<br>
+                            4. この式を解くと、3B = 30 となり、B = 10 が求まります。<br>
+                            5. したがって、A = 20 です。<br>
+                            6. 差は、A - B = 20 - 10 = 10 となります。<br>
+                            連立方程式を立てて解くことで、効率的に答えを導き出せます。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>2. 1500円の商品を30%引きで購入し、さらに5%のポイントが付きました。実質的な支払額は？</p>
+                        <button onclick="toggleAnswer('non-verbal-2')">答えを見る</button>
+                        <div id="non-verbal-2" class="answer">
+                            答え：997.5円<br>
+                            解説：
+                            1. 30%引きは、元の価格の70%を支払うことになります。<br>
+                            2. 1500 × 0.7 = 1050円 が割引後の金額です。<br>
+                            3. 5%のポイントは、1050 × 0.05 = 52.5円 です。<br>
+                            4. 実質的な支払額は、1050 - 52.5 = 997.5円 となります。<br>
+                            複数の割引やポイントが適用される場合、順番に計算していくことが重要です。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>3. 8人で仕事をすると15日かかります。同じ仕事を10人でやると何日かかりますか？小数点以下は切り捨てて答えてください。</p>
+                        <button onclick="toggleAnswer('non-verbal-3')">答えを見る</button>
+                        <div id="non-verbal-3" class="answer">
+                            答え：12日<br>
+                            解説：
+                            1. 仕事量を人数×日数で表すと、8 × 15 = 120 人日となります。<br>
+                            2. 10人で行う場合も全体の仕事量は同じなので、10 × x = 120 という式が成り立ちます。<br>
+                            3. xを求めると、x = 120 ÷ 10 = 12日 となります。<br>
+                            4. 小数点以下は切り捨てるので、答えは12日です。<br>
+                            仕事量を一定とし、人数と日数の関係を式で表すことがこの種の問題のポイントです。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>4. 半径5cmの円柱の体積が314cm³のとき、この円柱の高さは何cmですか？（πは3.14とする）</p>
+                        <button onclick="toggleAnswer('non-verbal-4')">答えを見る</button>
+                        <div id="non-verbal-4" class="answer">
+                            答え：4cm<br>
+                            解説：
+                            1. 円柱の体積の公式は、πr²h（rは半径、hは高さ）です。<br>
+                            2. 半径5cm、体積314cm³を代入すると、314 = 3.14 × 5² × h となります。<br>
+                            3. 計算すると、314 = 78.5h という式になります。<br>
+                            4. hについて解くと、h = 314 ÷ 78.5 = 4cm となります。<br>
+                            公式を適切に使い、未知数について解くことがこの問題の鍵です。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>5. AさんとBさんが同じ地点から出発し、同じ目的地に向かって歩きます。Aさんは時速4km、Bさんは時速3kmで歩きます。2時間後、2人の間の距離は何kmになりますか？</p>
+                        <button onclick="toggleAnswer('non-verbal-5')">答えを見る</button>
+                        <div id="non-verbal-5" class="answer">
+                            答え：2km<br>
+                            解説：
+                            1. Aさんの2時間後の移動距離：4km/h × 2h = 8km<br>
+                            2. Bさんの2時間後の移動距離：3km/h × 2h = 6km<br>
+                            3. 2人の間の距離：8km - 6km = 2km<br>
+                            速さが異なる場合、それぞれの移動距離を計算し、その差を求めることが重要です。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>6. 3つの数の平均が15で、そのうち2つの数が10と20のとき、残りの1つの数は何ですか？</p>
+                        <button onclick="toggleAnswer('non-verbal-6')">答えを見る</button>
+                        <div id="non-verbal-6" class="answer">
+                            答え：15<br>
+                            解説：
+                            1. 3つの数の合計は、15 × 3 = 45 です。<br>
+                            2. 既知の2つの数の合計は、10 + 20 = 30 です。<br>
+                            3. 残りの数は、45 - 30 = 15 となります。<br>
+                            平均から全体の合計を求め、既知の部分を引くことで未知の値を導き出せます。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>7. 1辺が6cmの立方体があります。この立方体の表面積は何cm²ですか？</p>
+                        <button onclick="toggleAnswer('non-verbal-7')">答えを見る</button>
+                        <div id="non-verbal-7" class="answer">
+                            答え：216cm²<br>
+                            解説：
+                            1. 立方体の表面積の公式は、6a²（aは1辺の長さ）です。<br>
+                            2. 1辺が6cmなので、6 × 6² = 6 × 36 = 216cm² となります。<br>
+                            3. 別の考え方として、1つの面の面積（6 × 6 = 36cm²）を6倍しても同じ結果が得られます。<br>
+                            立体図形の問題では、公式を適用するか、面の数と各面の面積から考えるアプローチが有効です。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>8. 1から10までの整数のうち、3の倍数でも5の倍数でもない数の合計はいくつですか？</p>
+                        <button onclick="toggleAnswer('non-verbal-8')">答えを見る</button>
+                        <div id="non-verbal-8" class="answer">
+                            答え：33<br>
+                            解説：
+                            1. 3の倍数：3, 6, 9<br>
+                            2. 5の倍数：5, 10<br>
+                            3. 条件を満たす数：1, 2, 4, 7, 8<br>
+                            4. これらの数の合計：1 + 2 + 4 + 7 + 8 = 22<br>
+                            条件に合う数を列挙し、それらを合計するアプローチが効果的です。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>9. 500mlのジュースを3人で等分に分けます。1人分は何mlですか？</p>
+                        <button onclick="toggleAnswer('non-verbal-9')">答えを見る</button>
+                        <div id="non-verbal-9" class="answer">
+                            答え：166.6ml（または166.7ml）<br>
+                            解説：
+                            1. 500 ÷ 3 = 166.6666... となります。<br>
+                            2. 小数第1位で四捨五入すると166.7mlになります。<br>
+                            3. 小数第1位で切り捨てると166.6mlになります。<br>
+                            4. 実際の状況に応じて、適切な丸め方を選択します。<br>
+                            実用的な問題では、計算結果の丸め方にも注意が必要です。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>10. 1辺が8cmの正方形の対角線の長さは何cmですか？（√2は1.414とする）</p>
+                        <button onclick="toggleAnswer('non-verbal-10')">答えを見る</button>
+                        <div id="non-verbal-10" class="answer">
+                            答え：11.312cm<br>
+                            解説：
+                            1. 正方形の対角線の長さは、1辺の長さ × √2 で求められます。<br>
+                            2. 1辺が8cmなので、8 × √2 を計算します。<br>
+                            3. √2 = 1.414 なので、8 × 1.414 = 11.312 となります。<br>
+                            4. したがって、対角線の長さは11.312cmです。<br>
+                            正方形の対角線の公式を覚えておくと、このような問題を素早く解くことができます。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="test-type">
+                <h3>SPI（言語分野）</h3>
+                <ul>
+                    <li>言語的な理解力や表現力を測定</li>
+                    <li>同意語・反意語、文章読解など</li>
+                </ul>
+                <div class="practice-questions">
+                    <h4>練習問題</h4>
+                    <div class="question">
+                        <p>1. 「勤勉」の反意語として最も適切なものは？</p>
+                        <button onclick="toggleAnswer('verbal-1')">答えを見る</button>
+                        <div id="verbal-1" class="answer">
+                            答え：怠惰<br>
+                            解説：「勤勉」は熱心に努力すること、「怠惰」はその反対を意味します。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>2. 「捗る」の読み方として正しいものは？</p>
+                        <button onclick="toggleAnswer('verbal-2')">答えを見る</button>
+                        <div id="verbal-2" class="answer">
+                            答え：はかどる<br>
+                            解説：「捗る」は「はかどる」と読み、物事が順調に進むことを意味します。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>3. 「臨機応変」の意味として最も適切なものは？</p>
+                        <button onclick="toggleAnswer('verbal-3')">答えを見る</button>
+                        <div id="verbal-3" class="answer">
+                            答え：その場の状況に応じて適切に対応すること<br>
+                            解説：「臨機応変」は状況に応じて柔軟に対応することを意味します。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>4. 「冗談」の同意語として最も適切なものは？</p>
+                        <button onclick="toggleAnswer('verbal-4')">答えを見る</button>
+                        <div id="verbal-4" class="answer">
+                            答え：戯言（ざれごと）<br>
+                            解説：「冗談」も「戯言」も真面目でない、おふざけの言葉を意味します。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>5. 「憂鬱」の読み方として正しいものは？</p>
+                        <button onclick="toggleAnswer('verbal-5')">答えを見る</button>
+                        <div id="verbal-5" class="answer">
+                            答え：ゆううつ<br>
+                            解説：「憂鬱」は「ゆううつ」と読み、気分が沈んでいることを意味します。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>6. 「慈悲」の反意語として最も適切なものは？</p>
+                        <button onclick="toggleAnswer('verbal-6')">答えを見る</button>
+                        <div id="verbal-6" class="answer">
+                            答え：無慈悲<br>
+                            解説：「慈悲」は思いやりの心、「無慈悲」はその反対を意味します。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>7. 「軽蔑」の同意語として最も適切なものは？</p>
+                        <button onclick="toggleAnswer('verbal-7')">答えを見る</button>
+                        <div id="verbal-7" class="answer">
+                            答え：侮蔑（ぶべつ）<br>
+                            解説：「軽蔑」も「侮蔑」も相手を見下すことを意味します。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>8. 「明瞭」の反意語として最も適切なものは？</p>
+                        <button onclick="toggleAnswer('verbal-8')">答えを見る</button>
+                        <div id="verbal-8" class="answer">
+                            答え：曖昧<br>
+                            解説：「明瞭」は明確であること、「曖昧」はその反対を意味します。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>9. 「頓挫」の読み方として正しいものは？</p>
+                        <button onclick="toggleAnswer('verbal-9')">答えを見る</button>
+                        <div id="verbal-9" class="answer">
+                            答え：とんざ<br>
+                            解説：「頓挫」は「とんざ」と読み、物事が途中で行き詰まることを意味します。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>10. 「謙虚」の反意語として最も適切なものは？</p>
+                        <button onclick="toggleAnswer('verbal-10')">答えを見る</button>
+                        <div id="verbal-10" class="answer">
+                            答え：傲慢<br>
+                            解説：「謙虚」は控えめで謙り深いこと、「傲慢」はその反対を意味します。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="test-type">
+                <h3>一般常識試験</h3>
+                <ul>
+                    <li>社会人として必要な基礎知識を測定</li>
+                    <li>時事問題、歴史、地理、科学など</li>
+                </ul>
+                <div class="practice-questions">
+                    <h4>練習問題</h4>
+                    <div class="question">
+                        <p>1. 日本の首相が国会で行う演説で、その年の施政方針を述べるものは？</p>
+                        <button onclick="toggleAnswer('general-1')">答えを見る</button>
+                        <div id="general-1" class="answer">
+                            答え：施政方針演説<br>
+                            解説：通常、年明けの通常国会で行われる重要な演説です。
+                        </div>
+                    <div class="question">
+                        <p>2. 日本の四大公害病のうち、水俣病の原因となった物質は？</p>
+                        <button onclick="toggleAnswer('general-2')">答えを見る</button>
+                        <div id="general-2" class="answer">
+                            答え：メチル水銀<br>
+                            解説：工場排水に含まれていたメチル水銀が食物連鎖を通じて人体に蓄積されました。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>3. 日本の都道府県で最も面積が小さいのはどこ？</p>
+                        <button onclick="toggleAnswer('general-3')">答えを見る</button>
+                        <div id="general-3" class="answer">
+                            答え：香川県<br>
+                            解説：香川県は約1,877平方キロメートルで、日本で最も面積が小さい県です。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>4. 日本国憲法が施行された年は？</p>
+                        <button onclick="toggleAnswer('general-4')">答えを見る</button>
+                        <div id="general-4" class="answer">
+                            答え：1947年（昭和22年）<br>
+                            解説：日本国憲法は1946年11月3日に公布され、1947年5月3日に施行されました。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>5. 国際連合（UN）の本部がある都市は？</p>
+                        <button onclick="toggleAnswer('general-5')">答えを見る</button>
+                        <div id="general-5" class="answer">
+                            答え：ニューヨーク<br>
+                            解説：国連本部はアメリカのニューヨーク市マンハッタン区にあります。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>6. 日本の元号「令和」の出典となった書物は？</p>
+                        <button onclick="toggleAnswer('general-6')">答えを見る</button>
+                        <div id="general-6" class="answer">
+                            答え：万葉集<br>
+                            解説：「令和」は万葉集の梅の花の序文から採られました。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>7. 日本の三権分立において、立法を担当する機関は？</p>
+                        <button onclick="toggleAnswer('general-7')">答えを見る</button>
+                        <div id="general-7" class="answer">
+                            答え：国会<br>
+                            解説：日本の三権分立は、立法（国会）、行政（内閣）、司法（裁判所）で構成されています。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>8. 地球温暖化の主な原因とされる気体は？</p>
+                        <button onclick="toggleAnswer('general-8')">答えを見る</button>
+                        <div id="general-8" class="answer">
+                            答え：二酸化炭素（CO2）<br>
+                            解説：人間活動による二酸化炭素の排出増加が地球温暖化の主な原因とされています。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>9. 日本の四大工業地帯に含まれないものは？</p>
+                        <button onclick="toggleAnswer('general-9')">答えを見る</button>
+                        <div id="general-9" class="answer">
+                            答え：北九州工業地帯<br>
+                            解説：日本の四大工業地帯は、京浜、中京、阪神、北九州ですが、近年は東海地方も含めて四大工業地帯とすることが多いです。
+                        </div>
+                    </div>
+                    <div class="question">
+                        <p>10. 日本の消費税率が10%に引き上げられたのは何年？</p>
+                        <button onclick="toggleAnswer('general-10')">答えを見る</button>
+                        <div id="general-10" class="answer">
+                            答え：2019年<br>
+                            解説：消費税率は2019年10月1日に8%から10%に引き上げられました。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="study-tips">
+            <h3>効果的な学習のポイント</h3>
+            <ol>
+                <li>計画的な学習スケジュールを立てる</li>
+                <li>苦手分野を把握し、重点的に対策する</li>
+                <li>SPI対策・玉手箱・ＣＡＢ・ＧＡＢ等の問題集で、過去問や模擬試験を繰り返し解く</li>
+                <li>時間配分を意識して問題を解く練習をする</li>
+                <li>解説をしっかり読み、理解を深める</li>
+                <li>毎日少しずつでも継続して学習する。youtubeの動画も活用しよう。</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>各分野の対策ポイント</h2>
+            <h3>非言語分野（数学）</h3>
+            <ul>
+                <li>基本的な計算力を身につける</li>
+                <li>図表の読み取り方を練習する</li>
+                <li>頻出の公式や解法パターンを覚える</li>
+            </ul>
+            <h3>言語分野</h3>
+            <ul>
+                <li>語彙力を増やす</li>
+                <li>速読のテクニックを身につける</li>
+                <li>文章の論理構造を把握する練習をする</li>
+            </ul>
+            <h3>一般常識</h3>
+            <ul>
+                <li>新聞やニュースに触れ、時事問題に敏感になる</li>
+                <li>基本的な歴史や地理の知識を復習する</li>
+                <li>社会の仕組みや経済の基礎知識を学ぶ</li>
+            </ul>
+        </div>
+
+        <p>筆記試験は準備次第で必ず点数を伸ばすことができます。計画的に学習を進め、自信を持って本番に臨みましょう。</p>
+    </div>
+
+    <script>
+        function toggleAnswer(id) {
+            var answer = document.getElementById(id);
+            if (answer.style.display === "none" || answer.style.display === "") {
+                answer.style.display = "block";
+            } else {
+                answer.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

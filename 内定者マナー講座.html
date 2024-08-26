@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内定者マナー講座 - 社会人としての基本マナーを身につけよう</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1{
+            color: #f2f3f4;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .manners {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .manner-item {
+            flex: 1 1 300px;
+            background-color: #e8f4f8;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .manner-item h3 {
+            margin-top: 0;
+            color: #3498db;
+        }
+        .tips {
+            background-color: #fff5e6;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .tips h3 {
+            margin-top: 0;
+            color: #e67e22;
+        }
+        .quiz {
+            background-color: #e8f8f5;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .quiz h3 {
+            margin-top: 0;
+            color: #181e8c;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        h1 {
+        background-color: #2724db; /* 水色の背景 */
+        padding: 15px;
+        text-align: center; /* センタリング */
+        border-radius: 8px; /* 角を丸くする（オプション） */
+        margin-bottom: 20px; /* 下の要素との間隔を開ける */
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>内定者マナー講座</h1>
+        <p>内定おめでとうございます。社会人として働き始める前に、基本的なビジネスマナーを身につけましょう。この講座では、職場で求められる基本的なマナーと心構えを学びます。</p>
+
+        <div class="section">
+            <h2>ビジネスマナーの基本</h2>
+            <div class="manners">
+                <div class="manner-item">
+                    <h3>挨拶と言葉遣い</h3>
+                    <ul>
+                        <li>明るく元気な挨拶を心がける</li>
+                        <li>敬語の正しい使い方を習得する</li>
+                        <li>クッション言葉を適切に使用する</li>
+                    </ul>
+                </div>
+                <div class="manner-item">
+                    <h3>身だしなみ</h3>
+                    <ul>
+                        <li>清潔感のある服装を心がける</li>
+                        <li>適切な髪型や化粧を心がける</li>
+                        <li>アクセサリーは控えめにする</li>
+                    </ul>
+                </div>
+                <div class="manner-item">
+                    <h3>時間管理</h3>
+                    <ul>
+                        <li>常に時間に余裕を持って行動する</li>
+                        <li>約束の時間は必ず守る</li>
+                        <li>スケジュール管理を徹底する</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>コミュニケーションスキル</h2>
+            <ul>
+                <li>相手の立場に立って考える</li>
+                <li>積極的に質問し、理解を深める</li>
+                <li>報告・連絡・相談（ホウ・レン・ソウ）を徹底する</li>
+                <li>適切な表情やジェスチャーを心がける</li>
+                <li>電話やメールの基本的なマナーを押さえる</li>
+            </ul>
+        </div>
+
+        <div class="tips">
+            <h3>社会人としての心構え</h3>
+            <ol>
+                <li>責任感を持って仕事に取り組む</li>
+                <li>チームワークを大切にする</li>
+                <li>常に学ぶ姿勢を持ち続ける</li>
+                <li>会社の規則やルールを遵守する</li>
+                <li>社会人としての自覚を持ち、行動する</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>ビジネス文書の基本</h2>
+            <ul>
+                <li>正しい文書フォーマットを使用する</li>
+                <li>簡潔で分かりやすい文章を心がける</li>
+                <li>誤字脱字に注意し、何度も確認する</li>
+                <li>適切な敬語と丁寧な表現を使用する</li>
+            </ul>
+        </div>
+
+        <div class="quiz">
+            <h3>マナークイズ</h3>
+            
+            <p><strong>問題1：</strong> 初対面の取引先の方と名刺交換をする際、最初に名刺を出すのは誰でしょうか？</p>
+            <button onclick="showAnswer('answer1')">答えを見る</button>
+            <p id="answer1" style="display: none;"><strong>答え：</strong> 立場が下の人（通常、自分）が先に名刺を出します。<br><strong>解説：</strong> ビジネスの場では、年齢や役職が下の人が先に名刺を差し出すのがマナーです。名刺を渡す際は、相手の名刺を受け取れる状態で両手を使って丁寧に渡しましょう。</p>
+        
+            <p><strong>問題2：</strong> 電話を受ける際の適切な対応は何でしょうか？</p>
+            <button onclick="showAnswer('answer2')">答えを見る</button>
+            <p id="answer2" style="display: none;"><strong>答え：</strong> 3コール以内に出て、「はい、○○会社の△△でございます」と名乗る。<br><strong>解説：</strong> 素早く応対し、会社名と自分の名前を明確に伝えることで、プロフェッショナルな印象を与えます。</p>
+        
+            <p><strong>問題3：</strong> 会議中に遅刻して入室する場合、どうすべきでしょうか？</p>
+            <button onclick="showAnswer('answer3')">答えを見る</button>
+            <p id="answer3" style="display: none;"><strong>答え：</strong> 小声で「失礼します」と言って入室し、会議の邪魔にならないよう静かに着席する。<br><strong>解説：</strong> 遅刻は避けるべきですが、やむを得ない場合は、会議の進行を妨げないよう配慮することが重要です。</p>
+        
+            <p><strong>問題4：</strong> ビジネスメールの件名の書き方として適切なのは？</p>
+            <button onclick="showAnswer('answer4')">答えを見る</button>
+            <p id="answer4" style="display: none;"><strong>答え：</strong> 内容が一目で分かる簡潔な件名をつける。<br><strong>解説：</strong> 「RE:」や「FW:」の連続は避け、受信者が内容を即座に理解できる明確な件名を心がけましょう。</p>
+        
+            <p><strong>問題5：</strong> 上司から指示された仕事で分からないことがある場合、どうすべきでしょうか？</p>
+            <button onclick="showAnswer('answer5')">答えを見る</button>
+            <p id="answer5" style="display: none;"><strong>答え：</strong> その場で確認し、必要に応じてメモを取る。<br><strong>解説：</strong> 曖昧なまま仕事を進めるのは避け、分からないことはその場で質問し、正確に理解することが重要です。</p>
+        
+            <p><strong>問題6：</strong> エレベーターでの適切な立ち位置は？</p>
+            <button onclick="showAnswer('answer6')">答えを見る</button>
+            <p id="answer6" style="display: none;"><strong>答え：</strong> 役職が上の人が奥に立ち、若手社員が扉側に立つ。<br><strong>解説：</strong> 上司や先輩を優先し、必要に応じて操作パネルの操作や扉の開閉を行うのが一般的なマナーです。</p>
+        
+            <p><strong>問題7：</strong> 社内で上司と廊下ですれ違う際、適切な行動は？</p>
+            <button onclick="showAnswer('answer7')">答えを見る</button>
+            <p id="answer7" style="display: none;"><strong>答え：</strong> 会釈をしながら、上司の進行方向側に寄る。<br><strong>解説：</strong> 上司に対して敬意を表しつつ、スムーズな通行を確保することが重要です。</p>
+        
+            <p><strong>問題8：</strong> 取引先との食事会で、会話中適切な箸の置き方は？</p>
+            <button onclick="showAnswer('answer8')">答えを見る</button>
+            <p id="answer8" style="display: none;"><strong>答え：</strong> 箸を箸置きの上に平行に置く。<br><strong>解説：</strong> 箸を交差させたり、食器に立てかけたりするのは失礼とされます。適切な箸の扱いは和食のマナーの基本です。</p>
+        
+            <p><strong>問題9：</strong> 社内での適切な身だしなみとして、不適切なのは？</p>
+            <button onclick="showAnswer('answer9')">答えを見る</button>
+            <p id="answer9" style="display: none;"><strong>答え：</strong> 強い香水をつける。<br><strong>解説：</strong> 職場では控えめな身だしなみが求められます。強い香りは周囲の人に不快感を与える可能性があるため避けましょう。</p>
+        
+            <p><strong>問題10：</strong> 上司からの指示に対して「承知いたしました」と返事をした後、適切な行動は？</p>
+            <button onclick="showAnswer('answer10')">答えを見る</button>
+            <p id="answer10" style="display: none;"><strong>答え：</strong> 指示内容を復唱し、理解していることを確認する。<br><strong>解説：</strong> 単に返事をするだけでなく、内容を正確に理解していることを示すことで、コミュニケーションの齟齬を防ぎます。</p>
+        </div>
+        
+        <script>
+            function showAnswer(id) {
+                document.getElementById(id).style.display = 'block';
+            }
+        </script>
+
+        <p>これらのマナーや心構えを身につけることで、スムーズに社会人生活をスタートできます。常に学ぶ姿勢を持ち、周囲の先輩社員の行動も参考にしながら、社会人としての成長を目指しましょう。</p>
+    </div>
+
+    
+</body>
+</html>

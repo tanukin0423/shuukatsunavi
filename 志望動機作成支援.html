@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>志望動機作成支援 - 学生のための就活ナビゲーター</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2ECC71;
+            --secondary-color: #27AE60;
+            --background-color: #F0F2F5;
+            --text-color: #333;
+        }
+        body {
+        font-family: 'Noto Sans JP', sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: var(--primary-color);
+        color: white;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .guide-section {
+        background-color: white;
+        border-radius: 10px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 0.5rem;
+    }
+
+    h3 {
+        color: var(--secondary-color);
+    }
+
+    .example {
+        background-color: #E8F8F5;
+        border-left: 4px solid var(--secondary-color);
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    .example-title {
+        font-weight: bold;
+        color: var(--secondary-color);
+        margin-bottom: 0.5rem;
+    }
+
+    form {
+        margin-top: 2rem;
+    }
+
+    label {
+        display: block;
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+
+    textarea {
+        width: 100%;
+        height: 150px;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        margin-top: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: var(--secondary-color);
+    }
+
+    footer {
+        text-align: center;
+        padding: 1rem;
+        background-color: var(--primary-color);
+        color: white;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>志望動機作成支援</h1>
+    </header>
+     <main>
+        <section class="guide-section">
+            <h2>志望動機の書き方</h2>
+            <p>志望動機は、あなたがなぜその企業で働きたいのかを明確に伝える重要な部分です。以下の要素を含めることで、より説得力のある志望動機を作成できます：</p>
+            <ol>
+                <li>企業理念や事業内容への共感</li>
+                <li>自身の強みや経験と企業ニーズのマッチング</li>
+                <li>入社後のビジョンや貢献したい点</li>
+            </ol>
+        </section>
+    
+        <section class="guide-section">
+            <h2>志望動機の構成</h2>
+            <label for="jobType">職種を選択：</label>
+            <select id="jobType">
+                <option value="sales">営業職</option>
+                <option value="itSales">IT営業職</option>
+                <option value="programmer">プログラマー職</option>
+                <option value="creative">クリエイティブ職</option>
+                <option value="manufacturing">製造系ライン職</option>
+                <option value="office">事務職</option>
+                <option value="retail">販売職</option>
+                <option value="labor">作業職</option>
+            </select>
+    
+            <h3>1. 導入部</h3>
+            <p>企業への興味や志望のきっかけを具体的に述べます。</p>
+            <div class="example">
+                <p class="example-title">例：</p>
+                <p id="introExample"></p>
+            </div>
+            
+            <h3>2. 本論部</h3>
+            <p>企業の具体的な取り組みと自身の強みや経験を結びつけて説明します。</p>
+            <div class="example">
+                <p class="example-title">例：</p>
+                <p id="mainExample"></p>
+            </div>
+            
+            <h3>3. 結論部</h3>
+            <p>入社後の具体的な抱負や企業への貢献意欲を述べます。</p>
+            <div class="example">
+                <p class="example-title">例：</p>
+                <p id="conclusionExample"></p>
+            </div>
+            </section>
+            
+            <section class="guide-section">
+            <h2>志望動機作成フォーム</h2>
+            <form id="motivationForm">
+                <div class="form-group">
+                    <label for="introduction">導入部：</label>
+                    <textarea id="introduction" name="introduction" required></textarea>
+                    <p>文字数: <span id="introCount">0</span></p>
+                </div>
+            
+                <div class="form-group">
+                    <label for="mainBody">本論部：</label>
+                    <textarea id="mainBody" name="mainBody" required></textarea>
+                    <p>文字数: <span id="mainCount">0</span></p>
+                </div>
+            
+                <div class="form-group">
+                    <label for="conclusion">結論部：</label>
+                    <textarea id="conclusion" name="conclusion" required></textarea>
+                    <p>文字数: <span id="conclusionCount">0</span></p>
+                </div>
+            
+                <p>合計文字数: <span id="totalCount">0</span></p>
+            
+                <button type="submit">保存</button>
+            </form>
+            </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 学生のための就活ナビゲーター All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        const examples = {
+            sales: {
+                intro: "貴社の「顧客第一主義」の理念と、革新的な営業戦略に深く共感し、志望いたしました。特に、2023年に実施された「顧客満足度向上キャンペーン」での成果に感銘を受け、私も貴社の一員として顧客との関係構築に貢献したいと強く感じています。",
+                main: "大学では経営学を専攻し、顧客心理や市場分析について学びました。また、学生団体での活動を通じて、イベント企画や運営の経験を積み、コミュニケーション能力や折衝力を磨きました。インターンシップでは、実際の営業活動に同行し、顧客ニーズの把握から提案までの一連のプロセスを学びました。これらの経験を活かし、貴社の営業部門で新規顧客の開拓や既存顧客との関係強化に貢献できると確信しています。",
+                conclusion: "入社後は、まず貴社の商品知識と営業手法を徹底的に学び、1年以内に独立して案件を担当できるようになることを目指します。3年後には、チームのトップセールスとして新規大口顧客の獲得に貢献し、5年後には若手営業の育成にも携わりたいと考えています。貴社の営業部門の一員として、顧客満足度の向上と売上増加の両立に尽力し、会社の成長に貢献していく所存です。"
+            },
+            itSales: {
+                intro: "貴社が提供するクラウドソリューションが、多くの企業のデジタルトランスフォーメーションを支援している点に強く惹かれ、志望いたしました。特に、2023年に発表された「中小企業向けAIサポートシステム」の革新性に感銘を受け、私もIT技術と営業スキルを融合させ、顧客の課題解決に貢献したいと考えています。",
+                main: "大学では情報工学を専攻し、同時にビジネス関連の副専攻を選択することで、IT知識とビジネススキルの両方を学びました。学生時代には、大学のITシステム改善プロジェクトに参加し、ユーザーニーズの分析から提案、導入までを経験しました。また、テクノロジー系のスタートアップでインターンシップを行い、最新のIT動向や顧客企業の課題について理解を深めました。これらの経験を活かし、貴社のIT営業部門で技術的な知見を基にした提案型営業を展開し、顧客企業のIT課題解決に貢献できると確信しています。",
+                conclusion: "入社後は、貴社の製品ラインナップと顧客業界の知識を徹底的に学び、2年以内に主要アカウントを担当できるようになることを目指します。5年後には、新規サービスの企画にも携わり、営業の視点から製品開発にも貢献したいと考えています。貴社のIT営業部門の一員として、技術と営業のブリッジ役となり、顧客企業のデジタル化推進と貴社の事業拡大に尽力していく所存です。"
+            },
+            programmer: {
+                intro: "貴社が開発する先進的なAIアルゴリズムと、オープンソースコミュニティへの貢献に深く共感し、志望いたしました。特に、2023年にリリースされた自然言語処理ライブラリの革新性に感銘を受け、私も貴社の一員としてソフトウェア開発を通じて社会に貢献したいと強く感じています。",
+                main: "大学では情報科学を専攻し、機械学習と分散システムに焦点を当てて研究を行いました。自然言語処理に関する論文を執筆し、国内学会で発表した経験があります。また、オープンソースプロジェクトにコントリビューターとして参加し、大規模なコードベースでの協働開発スキルを磨きました。インターンシップでは、スタートアップ企業で実際のプロダクト開発に携わり、アジャイル開発手法やDevOpsの実践的なスキルを習得しました。これらの経験を活かし、貴社の開発部門で最先端の技術を用いた革新的なソフトウェア開発に貢献できると確信しています。",
+                conclusion: "入社後は、まず貴社の開発環境と既存のコードベースを徹底的に理解し、6ヶ月以内にチームの中核メンバーとして機能改善や新機能の実装を担当できるようになることを目指します。2年後には、新規プロジェクトのテックリードを務め、5年後には自社製品の設計から開発、運用までを主導できるエンジニアになりたいと考えています。貴社の開発部門の一員として、技術革新を推進し、ユーザーに価値あるソフトウェアを提供することで、会社の成長と社会の発展に貢献していく所存です。"
+            },
+            creative: {
+                intro: "貴社のクリエイティブ作品が社会に与える影響力と、常に新しい表現方法に挑戦する姿勢に深く共感し、志望いたしました。特に、2023年に制作された「SDGs啓発キャンペーン」の斬新な映像表現に感銘を受け、私も貴社の一員として創造性を通じて社会に貢献したいと強く感じています。",
+                main: "大学ではデザイン学を専攻し、グラフィックデザインからモーショングラフィックス、UX/UIデザインまで幅広く学びました。在学中には、学生広告コンペティションで入賞し、創造的な問題解決能力が評価されました。また、地域のNPO団体と協働で環境保護キャンペーンのビジュアル制作を担当し、社会性のあるデザインの実践経験を積みました。インターンシップでは、広告代理店でクライアントワークを経験し、ブランディングの重要性と戦略的なクリエイティブ制作のプロセスを学びました。これらの経験を活かし、貴社のクリエイティブ部門で革新的かつ効果的な視覚表現の創出に貢献できると確信しています。",
+                conclusion: "入社後は、まず貴社のクリエイティブ制作フローと最新のデザインツールを習得し、1年以内にチームの中核メンバーとして複数のプロジェクトに携わることを目指します。3年後には、大規模キャンペーンのアートディレクションを担当し、5年後には新しいビジュアルスタイルの開発やクリエイティブ戦略の立案にも携わりたいと考えています。貴社のクリエイティブ部門の一員として、革新的な表現方法の探求と社会的価値の創出の両立に尽力し、ブランドの成長と社会の発展に貢献していく所存です。"
+            },
+            manufacturing: {
+                intro: "貴社の「品質第一」の理念と、持続可能な製造プロセスへの取り組みに深く共感し、志望いたしました。特に、2023年に導入された「エコフレンドリー生産ライン」の革新性に感銘を受け、私も貴社の一員として高品質な製品づくりと環境負荷低減の両立に貢献したいと強く感じています。",
+            main: "工業高校で機械工学を学び、特に生産技術と品質管理に興味を持ちました。在学中には、実習を通じて各種工作機械の操作技術を習得し、また小型エンジンの製作プロジェクトでチームリーダーを務め、製造工程の効率化に取り組みました。さらに、地元の中小企業での長期インターンシップで、実際の製造ラインでの作業経験を積み、5S活動や改善提案活動にも積極的に参加しました。これらの経験を通じて培った技術スキルとチームワーク力を活かし、貴社の製造部門で高品質な製品の安定生産と製造プロセスの継続的改善に貢献できると確信しています。",
+            conclusion: "入社後は、まず貴社の製造技術と品質管理システムを徹底的に学び、1年以内に複数の工程を任せていただけるよう努めます。3年後には、改善提案制度で具体的な成果を上げ、生産性向上に貢献したいと考えています。5年後には、若手作業員の指導役として技術伝承にも携わり、製造現場のリーダーを目指します。貴社の製造部門の一員として、高品質な製品づくりと環境に配慮した生産プロセスの実現に尽力し、会社の競争力強化と持続可能な社会の実現に貢献していく所存です。"
+        },
+        office: {
+intro: "貴社の「効率と正確性の追求」という理念と、最新のオフィス技術の積極的な導入に深く共感し、志望いたしました。特に、2023年に実施された「ペーパーレスオフィス化プロジェクト」の成果に感銘を受け、私も貴社の一員として業務の効率化と品質向上に貢献したいと強く感じています。",
+main: "大学では経営学を専攻し、特に業務効率化とオフィスマネジメントについて学びました。学生時代には、大学事務局でアルバイトとして働き、文書管理やデータ入力、来客対応など幅広い業務を経験しました。また、学園祭の運営委員会では会計担当として、予算管理や経費精算の実務を担当しました。これらの経験を通じて、正確性とスピードを両立させる能力や、多様な関係者と円滑にコミュニケーションを取る力を身につけました。これらのスキルを活かし、貴社の事務部門で業務の効率化や正確性の向上に貢献できると確信しています。",
+conclusion: "入社後は、まず貴社の業務フローと各種システムを徹底的に学び、6ヶ月以内に独立して複数の業務を担当できるようになることを目指します。2年後には、業務改善提案を積極的に行い、部門の効率化に貢献したいと考えています。5年後には、若手社員の指導や新しい業務システムの導入プロジェクトにも携わりたいと考えています。貴社の事務部門の一員として、正確で効率的な業務遂行を通じて、会社全体の生産性向上に貢献していく所存です。"
+},
+retail: {
+intro: "貴社の「お客様の暮らしに寄り添う」という理念と、革新的な店舗運営方針に深く共感し、志望いたしました。特に、2023年に展開された「パーソナライズドショッピング体験」の取り組みに感銘を受け、私も貴社の一員としてお客様一人ひとりに最適な買い物体験を提供することに貢献したいと強く感じています。",
+main: "大学では心理学を専攻し、特に消費者行動について学びました。学生時代には、大型家電量販店でアルバイトとして2年間働き、接客や商品知識、在庫管理など販売に関する基本的なスキルを身につけました。また、学園祭では模擬店の企画・運営を担当し、商品選定から価格設定、販売促進まで一連のプロセスを経験しました。これらの経験を通じて、お客様のニーズを的確に把握し、適切な商品を提案する能力や、チームで協力して売り上げ目標を達成する力を培いました。これらのスキルを活かし、貴社の販売部門でお客様満足度の向上と売上増加に貢献できると確信しています。",
+conclusion: "入社後は、まず貴社の商品知識と接客基準を徹底的に学び、3ヶ月以内にフロア全体の商品についてお客様にアドバイスできるようになることを目指します。1年後には、売り場の売上トップを達成し、2年後には新人教育も担当したいと考えています。5年後には、店舗管理職として、革新的な販売戦略の立案や実施にも携わりたいと考えています。貴社の販売部門の一員として、お客様一人ひとりに寄り添った接客を通じて、顧客満足度の向上と企業価値の向上に貢献していく所存です。"
+},
+labor: {
+intro: "貴社の「安全第一」の理念と、最新技術を活用した作業効率化への取り組みに深く共感し、志望いたしました。特に、2023年に導入された「AIによる作業最適化システム」の革新性に感銘を受け、私も貴社の一員として安全で効率的な作業環境の実現に貢献したいと強く感じています。",
+main: "高校在学中から製造業でのアルバイト経験を重ね、特に生産技術と安全管理に興味を持ちました。週末や長期休暇を利用して、地元の工場で様々な製造ラインでの作業を経験し、各種機械の操作技術を習得しました。また、繁忙期には小規模なチームのリーダーとして作業の割り振りや進捗管理も担当しました。卒業後は、製造業の派遣社員として1年間働き、実際の生産現場での経験をさらに積みました。この間、5S活動や改善提案活動に積極的に参加し、作業効率の向上と安全性の確保に貢献しました。これらの経験を通じて、安全意識と効率性を両立させる能力や、チームで協力して問題解決に取り組む力を培いました。これらのスキルを活かし、貴社の作業部門で安全で効率的な作業環境の実現に貢献できると確信しています。",
+conclusion: "入社後は、まず貴社の安全基準と作業手順を徹底的に学び、3ヶ月以内に複数の作業工程を任せていただけるよう努めます。1年後には、改善提案制度で具体的な成果を上げ、作業効率の向上に貢献したいと考えています。3年後には、チームリーダーとして後輩の指導も担当し、5年後には現場監督者として安全管理と生産性向上の両立に携わりたいと考えています。貴社の作業部門の一員として、安全性と効率性を常に意識しながら、品質の高い製品の安定供給と働きやすい職場環境の実現に貢献していく所存です。"
+}
+    };
+
+    function countCharacters(text) {
+        return text.replace(/\s+/g, '').length;
+    }
+
+    function updateCharCount() {
+        const intro = document.getElementById('introduction').value;
+        const main = document.getElementById('mainBody').value;
+        const conclusion = document.getElementById('conclusion').value;
+
+        const introCount = countCharacters(intro);
+        const mainCount = countCharacters(main);
+        const conclusionCount = countCharacters(conclusion);
+        const totalCount = introCount + mainCount + conclusionCount;
+
+        document.getElementById('introCount').textContent = introCount;
+        document.getElementById('mainCount').textContent = mainCount;
+        document.getElementById('conclusionCount').textContent = conclusionCount;
+        document.getElementById('totalCount').textContent = totalCount;
+    }
+
+    document.getElementById('introduction').addEventListener('input', updateCharCount);
+    document.getElementById('mainBody').addEventListener('input', updateCharCount);
+    document.getElementById('conclusion').addEventListener('input', updateCharCount);
+
+    function updateExamples() {
+        const jobType = document.getElementById('jobType').value;
+        document.getElementById('introExample').textContent = examples[jobType].intro;
+        document.getElementById('mainExample').textContent = examples[jobType].main;
+        document.getElementById('conclusionExample').textContent = examples[jobType].conclusion;
+    }
+
+    document.getElementById('jobType').addEventListener('change', updateExamples);
+
+    document.getElementById('motivationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const introduction = document.getElementById('introduction').value;
+        const mainBody = document.getElementById('mainBody').value;
+        const conclusion = document.getElementById('conclusion').value;
+
+        const introCount = countCharacters(introduction);
+        const mainCount = countCharacters(mainBody);
+        const conclusionCount = countCharacters(conclusion);
+        const totalCount = introCount + mainCount + conclusionCount;
+
+        const motivationText = `志望動機
+
+導入部：
+${introduction}
+文字数: ${introCount}
+
+本論部：
+${mainBody}
+文字数: ${mainCount}
+
+結論部：
+${conclusion}
+文字数: ${conclusionCount}
+
+合計文字数: ${totalCount}`;
+
+        const blob = new Blob([motivationText], {type: 'text/plain'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = '志望動機.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        alert('志望動機がダウンロードされました。');
+    });
+
+    // 初期表示時に例文を設定し、文字数をカウント
+    window.addEventListener('load', function() {
+        updateExamples();
+        updateCharCount();
+    });
+    </script>
+</body>
+</html>

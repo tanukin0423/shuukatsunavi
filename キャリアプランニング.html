@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>キャリアプランニング - 学生のための就活ナビゲーター</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1{
+            color: #fcfbfb;
+        }
+        h2 {
+            color: #333;
+        }
+        .step {
+            background-color: #e6f7ff;
+            border-left: 5px solid #1890ff;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .step h3 {
+            margin-top: 0;
+            color: #1890ff;
+        }
+        .tool {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .tool h4 {
+            margin-top: 0;
+        }
+        .tip {
+            background-color: #fff7e6;
+            border-left: 5px solid #ffa940;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #1890ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #40a9ff;
+        }
+        h1 {
+        background-color: #1d3ee2; /* 水色の背景 */
+        padding: 15px;
+        text-align: center; /* センタリング */
+        border-radius: 8px; /* 角を丸くする（オプション） */
+        margin-bottom: 20px; /* 下の要素との間隔を開ける */
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>キャリアプランニング</h1>
+        <p>長期的なキャリアビジョンを描くことは、自己実現と職業生活の充実につながります。以下のステップを参考に、あなた自身のキャリアプランを作成しましょう。</p>
+        
+        <div class="step">
+            <h3>Step 1: 自己理解を深める</h3>
+            <p>自分の強み、価値観、興味関心を明確にすることから始めましょう。</p>
+            <div class="tool">
+                <h4>推奨ツール: 自己分析ワークシート</h4>
+                <p>過去の経験を振り返り、自分の特性や志向を整理します。</p>
+            </div>
+            <textarea id="step1" placeholder="あなたの考えをここに書いてください..."></textarea>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: 将来のビジョンを描く</h3>
+            <p>5年後、10年後、20年後の理想の自分像を具体的にイメージします。</p>
+            <div class="tool">
+                <h4>推奨ツール: ビジョンボード作成</h4>
+                <p>理想の未来を視覚化し、目標設定の助けとします。</p>
+            </div>
+            <textarea id="step2" placeholder="あなたの考えをここに書いてください..."></textarea>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: 業界・職種研究</h3>
+            <p>興味のある業界や職種について深く調べ、キャリアの可能性を探ります。</p>
+            <div class="tool">
+                <h4>推奨ツール: キャリアパス調査シート</h4>
+                <p>様々な職種のキャリアパスを調査し、比較検討します。</p>
+            </div>
+            <textarea id="step3" placeholder="あなたの考えをここに書いてください..."></textarea>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: 具体的な目標設定</h3>
+            <p>短期、中期、長期の目標を設定し、それぞれの達成に必要なステップを明確にします。</p>
+            <div class="tool">
+                <h4>推奨ツール: SMART目標設定シート</h4>
+                <p>具体的で測定可能な目標を設定し、行動計画を立てます。</p>
+            </div>
+            <textarea id="step4" placeholder="あなたの考えをここに書いてください..."></textarea>
+        </div>
+
+        <div class="step">
+            <h3>Step 5: スキル開発計画</h3>
+            <p>目標達成に必要なスキルを特定し、習得のための計画を立てます。</p>
+            <div class="tool">
+                <h4>推奨ツール: スキルマップ</h4>
+                <p>現在のスキルレベルと目標レベルを可視化し、学習計画を立てます。</p>
+            </div>
+            <textarea id="step5" placeholder="あなたの考えをここに書いてください..."></textarea>
+        </div>
+
+        <div class="tip">
+            <h3>キャリアプランニングのポイント</h3>
+            <ul>
+                <li>定期的に計画を見直し、必要に応じて調整する</li>
+                <li>メンターや先輩社会人からアドバイスを得る</li>
+                <li>業界のトレンドや技術の進化に注目し、柔軟に対応する</li>
+                <li>自己啓発の機会を積極的に活用する</li>
+            </ul>
+        </div>
+
+        <button onclick="saveToFile()">プランを保存する</button>
+    </div>
+
+    <script>
+        function saveToFile() {
+            let content = "";
+            for (let i = 1; i <= 5; i++) {
+                content += `Step ${i}:\n${document.getElementById('step' + i).value}\n\n`;
+            }
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'my_career_plan.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+</body>
+</html>
