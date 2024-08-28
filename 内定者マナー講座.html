@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>内定者マナー講座 - 社会人としての基本マナーを身につけよう</title>
     <style>
+        /* 全体のスタイル */
         body {
             font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
             line-height: 1.6;
@@ -21,12 +22,21 @@
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
         }
-        h1{
+        
+        /* 見出しのスタイル */
+        h1 {
+            background-color: #2724db;
             color: #f2f3f4;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
         }
         h2 {
             color: #2c3e50;
         }
+        
+        /* セクションのスタイル */
         .section {
             margin-bottom: 30px;
         }
@@ -46,13 +56,15 @@
             margin-top: 0;
             color: #3498db;
         }
-        .tips {
+        
+        /* 特殊セクションのスタイル */
+        .tips, .email-section, .cover-letter-section, .bow-section {
             background-color: #fff5e6;
             padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
         }
-        .tips h3 {
+        .tips h3, .email-section h3, .cover-letter-section h3, .bow-section h3 {
             margin-top: 0;
             color: #e67e22;
         }
@@ -66,6 +78,8 @@
             margin-top: 0;
             color: #181e8c;
         }
+        
+        /* ボタンのスタイル */
         button {
             background-color: #3498db;
             color: white;
@@ -78,13 +92,33 @@
         button:hover {
             background-color: #2980b9;
         }
-        h1 {
-        background-color: #2724db; /* 水色の背景 */
-        padding: 15px;
-        text-align: center; /* センタリング */
-        border-radius: 8px; /* 角を丸くする（オプション） */
-        margin-bottom: 20px; /* 下の要素との間隔を開ける */
-    }
+        
+        /* メールと添え状の例のスタイル */
+        .email-example, .cover-letter-example {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        
+        /* お辞儀のタイプのスタイル */
+        .bow-types {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .bow-type {
+            text-align: center;
+            flex-basis: 30%;
+            margin-bottom: 20px;
+        }
+        .bow-type img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -92,6 +126,7 @@
         <h1>内定者マナー講座</h1>
         <p>内定おめでとうございます。社会人として働き始める前に、基本的なビジネスマナーを身につけましょう。この講座では、職場で求められる基本的なマナーと心構えを学びます。</p>
 
+        <!-- ビジネスマナーの基本 -->
         <div class="section">
             <h2>ビジネスマナーの基本</h2>
             <div class="manners">
@@ -122,6 +157,7 @@
             </div>
         </div>
 
+        <!-- コミュニケーションスキル -->
         <div class="section">
             <h2>コミュニケーションスキル</h2>
             <ul>
@@ -133,6 +169,7 @@
             </ul>
         </div>
 
+        <!-- 社会人としての心構え -->
         <div class="tips">
             <h3>社会人としての心構え</h3>
             <ol>
@@ -144,6 +181,7 @@
             </ol>
         </div>
 
+        <!-- ビジネス文書の基本 -->
         <div class="section">
             <h2>ビジネス文書の基本</h2>
             <ul>
@@ -154,6 +192,110 @@
             </ul>
         </div>
 
+        <!-- メール文の書き方 -->
+        <div class="email-section">
+            <h3>メール文の書き方</h3>
+            <p>企業宛のメールを書く際は、以下の点に注意しましょう：</p>
+            <h4>タイトルの書き方</h4>
+            <ul>
+                <li>簡潔で内容が分かりやすいタイトルをつける</li>
+                <li>「RE:」や「FW:」の連続は避ける</li>
+                <li>例: 「面接のお礼とご連絡」「内定承諾のご連絡」など</li>
+            </ul>
+            <h4>面接の案内に対する御礼の文章例</h4>
+            <div class="email-example">
+                <p>件名：面接のお礼とご連絡</p>
+                <p>
+                ○○株式会社<br>
+                人事部 ○○様<br><br>
+
+                お世話になっております。<br>
+                先日は面接の機会を頂き、誠にありがとうございました。<br><br>
+
+                貴社の事業内容や職場の雰囲気について詳しくお聞きすることができ、
+                私の就職活動において大変参考になりました。<br><br>
+
+                面接を通じて、私の○○というスキルを活かせる可能性を感じることができました。
+                今後ともご検討のほど、よろしくお願いいたします。<br><br>
+
+                何かご不明な点がございましたら、お手数ですが下記連絡先までご連絡ください。<br><br>
+
+                今後とも何卒よろしくお願い申し上げます。<br><br>
+
+                ○○大学 ○○学部<br>
+                ○○ ○○<br>
+                連絡先：090-XXXX-XXXX<br>
+                メールアドレス：xxxxx@example.com
+                </p>
+            </div>
+        </div>
+
+        <!-- 添え状（送付状）の書き方 -->
+        <div class="cover-letter-section">
+            <h3>添え状（送付状）の書き方</h3>
+            <p>書類を郵送する際に同封する添え状は、以下の要素を含めて作成します：</p>
+            <ul>
+                <li>宛名</li>
+                <li>日付</li>
+                <li>件名</li>
+                <li>本文（挨拶、送付書類の内容、締めの言葉）</li>
+                <li>署名</li>
+            </ul>
+            <h4>添え状の文例</h4>
+            <div class="cover-letter-example">
+                <p>
+                ○○年○○月○○日<br><br>
+
+                ○○株式会社<br>
+                人事部 ○○様<br><br>
+
+                　　　　　　　　　　　　　　　　　　　○○大学 ○○学部<br>
+                　　　　　　　　　　　　　　　　　　　○○ ○○<br><br>
+
+                　　　　　　　記<br><br>
+
+                拝啓　時下ますますご清祥のこととお慶び申し上げます。<br><br>
+
+                この度は、貴社の採用選考に関する書類をご送付させていただきます。<br>
+                ご多忙の折、誠に恐縮ではございますが、ご確認いただけますと幸いです。<br><br>
+
+                　　　　　　　　　　　　送付書類<br>
+                　　　　　　　　　　　　１．履歴書　　　　　　１通<br>
+                　　　　　　　　　　　　２．成績証明書　　　　１通<br>
+                　　　　　　　　　　　　３．卒業見込証明書　　１通<br><br>
+
+                何卒よろしくお願い申し上げます。<br><br>
+
+                敬具
+                </p>
+            </div>
+        </div>
+
+        <!-- お辞儀の仕方 -->
+        <div class="bow-section">
+            <h3>お辞儀の仕方</h3>
+            <p>日本のビジネスマナーにおいて、お辞儀は重要な要素です。状況に応じて適切なお辞儀を使い分けることが大切です。</p>
+            <div class="bow-types">
+                <div class="bow-type">
+                    <h4>会釈（エシャク）</h4>
+                    <img src="eshaku.jpg" alt="会釈のイメージ">
+                    <p>角度：約15度<br>用途：挨拶、感謝</p>
+                </div>
+                <div class="bow-type">
+                    <h4>敬礼（ケイレイ）</h4>
+                    <img src="keirei.jpg" alt="敬礼のイメージ">
+                    <p>角度：約30度<br>用途：通常の挨拶、謝罪</p>
+                </div>
+                <div class="bow-type">
+                    <h4>最敬礼（サイケイレイ）</h4>
+                    <img src="saikeirei.jpg" alt="最敬礼のイメージ">
+                    <p>角度：約45度<br>用途：深い感謝、謝罪</p>
+                </div>
+            </div>
+            <p>お辞儀をする際は、背筋を伸ばし、腰から曲げるように心がけましょう。また、相手の目を見てから、ゆっくりとお辞儀をし、戻る際もゆっくりと行います。</p>
+        </div>
+
+        <!-- マナークイズ -->
         <div class="quiz">
             <h3>マナークイズ</h3>
             
@@ -198,15 +340,13 @@
             <p id="answer10" style="display: none;"><strong>答え：</strong> 指示内容を復唱し、理解していることを確認する。<br><strong>解説：</strong> 単に返事をするだけでなく、内容を正確に理解していることを示すことで、コミュニケーションの齟齬を防ぎます。</p>
         </div>
         
-        <script>
-            function showAnswer(id) {
-                document.getElementById(id).style.display = 'block';
-            }
-        </script>
-
         <p>これらのマナーや心構えを身につけることで、スムーズに社会人生活をスタートできます。常に学ぶ姿勢を持ち、周囲の先輩社員の行動も参考にしながら、社会人としての成長を目指しましょう。</p>
     </div>
 
-    
+    <script>
+        function showAnswer(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
 </body>
 </html>
