@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>企業研究プロンプト作成ツール</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background-color: #f0f0f0;
+            }
+    
+            .container {
+                background-color: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                width: 80%;
+                max-width: 800px;
+                margin: 20px 0;
+            }
+    
+            label, button, h1, h2 {
+                margin-bottom: 10px;
+                display: block;
+            }
+    
+            input[type="text"], select, textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 20px;
+                border-radius: 4px;
+                border: 1px solid #ddd;
+                box-sizing: border-box;
+            }
+    
+            textarea {
+                height: 100px;
+                resize: vertical;
+            }
+    
+            button {
+                padding: 10px 15px;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+    
+            button:hover {
+                background-color: #0056b3;
+            }
+
+            .compare-company {
+                margin-bottom: 20px;
+                padding: 10px;
+                background-color: #f8f8f8;
+                border-radius: 4px;
+            }
+        </style>
+    </head>
+<body>
+    <div class="container">
+        <h1>企業研究プロンプト作成ツール</h1>
+
+        <label for="companyName">企業名を入力してください:</label>
+        <input type="text" id="companyName" placeholder="企業名を入力">
+
+        <label for="industry">業界を選択してください:</label>
+        <select id="industry">
+            <option value="">業界を選択</option>
+            <option value="IT・ソフトウェア">IT・ソフトウェア</option>
+            <option value="製造業">製造業</option>
+            <option value="金融業">金融業</option>
+            <option value="不動産">不動産</option>
+            <option value="サービス業">サービス業</option>
+            <option value="医療・福祉">医療・福祉</option>
+            <option value="教育">教育</option>
+            <option value="小売業">小売業</option>
+            <option value="卸売業">卸売業</option>
+            <option value="建設業">建設業</option>
+            <option value="運輸・物流">運輸・物流</option>
+            <option value="エネルギー">エネルギー</option>
+            <option value="通信">通信</option>
+            <option value="農林水産業">農林水産業</option>
+            <option value="観光・ホテル">観光・ホテル</option>
+            <option value="食品・飲料">食品・飲料</option>
+            <option value="メディア・エンターテインメント">メディア・エンターテインメント</option>
+            <option value="広告・マーケティング">広告・マーケティング</option>
+            <option value="コンサルティング">コンサルティング</option>
+            <option value="法律・会計">法律・会計</option>
+            <option value="人材サービス">人材サービス</option>
+            <option value="化学・素材">化学・素材</option>
+            <option value="自動車・輸送機器">自動車・輸送機器</option>
+            <option value="電機・電子">電機・電子</option>
+            <option value="航空・宇宙">航空・宇宙</option>
+            <option value="環境・リサイクル">環境・リサイクル</option>
+            <option value="スポーツ・フィットネス">スポーツ・フィットネス</option>
+            <option value="美容・ファッション">美容・ファッション</option>
+            <option value="研究開発">研究開発</option>
+            <option value="その他">その他</option>
+        </select>
+
+        <label for="jobType">応募職種を選択してください:</label>
+        <select id="jobType">
+            <option value="">職種を選択</option>
+            <option value="エンジニア">エンジニア</option>
+            <option value="営業">営業</option>
+            <option value="マーケティング">マーケティング</option>
+            <option value="人事">人事</option>
+            <option value="経理">経理</option>
+            <option value="財務">財務</option>
+            <option value="法務">法務</option>
+            <option value="広報">広報</option>
+            <option value="企画">企画</option>
+            <option value="研究開発">研究開発</option>
+            <option value="デザイナー">デザイナー</option>
+            <option value="コンサルタント">コンサルタント</option>
+            <option value="プロジェクトマネージャー">プロジェクトマネージャー</option>
+            <option value="データアナリスト">データアナリスト</option>
+            <option value="カスタマーサポート">カスタマーサポート</option>
+            <option value="セールスマネージャー">セールスマネージャー</option>
+            <option value="商品企画">商品企画</option>
+            <option value="品質管理">品質管理</option>
+            <option value="生産管理">生産管理</option>
+            <option value="物流">物流</option>
+            <option value="購買">購買</option>
+            <option value="国際業務">国際業務</option>
+            <option value="広告">広告</option>
+            <option value="編集">編集</option>
+            <option value="教育・研修">教育・研修</option>
+            <option value="医療専門職">医療専門職</option>
+            <option value="建築・土木">建築・土木</option>
+            <option value="秘書">秘書</option>
+            <option value="総務">総務</option>
+            <option value="その他">その他</option>
+        </select>
+
+        <div class="compare-company">
+            <label for="compareCompany1">比較企業1:</label>
+            <input type="text" id="compareCompany1" placeholder="比較企業1の名前を入力">
+        </div>
+
+        <div class="compare-company">
+            <label for="compareCompany2">比較企業2:</label>
+            <input type="text" id="compareCompany2" placeholder="比較企業2の名前を入力">
+        </div>
+
+        <div class="compare-company">
+            <label for="compareCompany3">比較企業3:</label>
+            <input type="text" id="compareCompany3" placeholder="比較企業3の名前を入力">
+        </div>
+
+        <label for="gakuchika">学生時代に力を入れたこと（ガクチカ）:</label>
+        <textarea id="gakuchika" placeholder="学生時代に力を入れたことを入力"></textarea>
+
+        <label for="selfPR">自己PR:</label>
+        <textarea id="selfPR" placeholder="自己PRを入力"></textarea>
+
+        <button onclick="generatePrompt()">プロンプトを作成</button>
+
+        <div id="output">
+            <h2>生成されたプロンプト</h2>
+            <textarea id="promptText" readonly></textarea>
+            <button onclick="copyPrompt()">プロンプトをコピー</button>
+        </div>
+    </div>
+
+     <script>
+        function generatePrompt() {
+            const companyName = document.getElementById("companyName").value;
+            const industry = document.getElementById("industry").value;
+            const jobType = document.getElementById("jobType").value;
+            const compareCompany1 = document.getElementById("compareCompany1").value;
+            const compareCompany2 = document.getElementById("compareCompany2").value;
+            const compareCompany3 = document.getElementById("compareCompany3").value;
+            const gakuchika = document.getElementById("gakuchika").value;
+            const selfPR = document.getElementById("selfPR").value;
+
+            if (!companyName) {
+                alert("企業名を入力してください。");
+                return;
+            }
+
+            const prompt = `
+あなたは企業研究の達人であり、就職活動をする学生の最高のアドバイザーです。以下の企業について、徹底的かつ戦略的な分析を行い、学生が面接官を唸らせるような深い洞察と具体的な情報を提供してください。
+
+対象企業: ${companyName}
+業界: ${industry ? industry : "（未指定）"}
+応募職種: ${jobType ? jobType : "（未指定）"}
+比較企業1: ${compareCompany1 ? compareCompany1 : "（未指定）"}
+比較企業2: ${compareCompany2 ? compareCompany2 : "（未指定）"}
+比較企業3: ${compareCompany3 ? compareCompany3 : "（未指定）"}
+
+1. 企業の核心に迫る分析:
+   - 創業の原点と、創業者の理念や哲学
+   - 企業理念・ビジョン・ミッションの真の意味と、それが事業にどう反映されているか
+   - 企業文化や価値観が、どのように競争優位性を生み出しているか
+
+2. 事業戦略の深掘り:
+   - 主力事業の詳細な分析と、今後の成長戦略
+   - 新規事業や研究開発の方向性、及びそのインパクト
+   - グローバル戦略と、海外市場での位置づけ
+
+3. 業界内でのポジショニング:
+   - 市場シェアと、そのトレンド分析
+   - 競合他社との明確な差別化要因
+   - 業界の変革期における、当該企業の革新的な取り組み
+
+4. 財務状況の洞察:
+   - 過去5年間の主要財務指標の推移と、その背景
+   - 投資戦略と資本効率の分析
+   - 株主還元策と、企業の成長戦略とのバランス
+
+5. 人材戦略と職場環境:
+   - 人材育成システムと、キャリアパスの具体例
+   - ダイバーシティ＆インクルージョンへの取り組みと、その成果
+   - 働き方改革や福利厚生の特徴的な施策
+
+6. 社会的責任と持続可能性:
+   - ESG（環境・社会・ガバナンス）への具体的な取り組みと、その影響
+   - 地域社会や国際社会への貢献活動
+   - 長期的な持続可能性に向けた、具体的なビジョンと行動計画
+
+7. 技術革新とデジタル化:
+   - AIやIoTなどの先端技術の活用状況と、将来計画
+   - デジタルトランスフォーメーション（DX）の進捗と、その影響
+   - イノベーションを促進する組織体制や制度
+
+8. 業界特有の課題と対策:
+   - 規制環境の変化や、政策動向への対応策
+   - 業界特有のリスク（例：サイバーセキュリティ、環境規制）への取り組み
+   - 業界の構造変化に対する、当該企業の適応戦略
+
+9. ${jobType}職の役割と期待:
+   - 具体的な業務内容と、求められるスキルセット
+   - この職種が企業の成長にどう貢献するか
+   - キャリアパスの具体例と、成長機会
+
+10. 志望動機構築のヒント:
+    - 企業の課題や成長戦略と、応募者の強みをリンクさせる方法
+    - 企業理念や価値観と、応募者の価値観を結びつける具体的なアプローチ
+    - 業界動向や社会課題と、応募者の問題意識を関連付ける視点
+
+11. 面接対策:
+    - 想定される質問と、理想的な回答例
+    - 企業や業界特有の専門用語や概念
+    - 面接官を唸らせる、ユニークな質問例
+
+12. 比較企業との分析:
+以下の項目について、${companyName}と比較企業（${compareCompany1}、${compareCompany2}、${compareCompany3}）を比較するマトリクス表を作成してください。各項目について、それぞれの企業の特徴や強みを簡潔に記述してください。
+
+| 比較項目 | ${companyName} | ${compareCompany1} | ${compareCompany2} | ${compareCompany3} |
+|----------|----------------|---------------------|---------------------|---------------------|
+| 企業理念・ビジョン |  |  |  |  |
+| 主力事業 |  |  |  |  |
+| 市場シェア |  |  |  |  |
+| 財務状況 |  |  |  |  |
+| 人材戦略 |  |  |  |  |
+| 技術革新 |  |  |  |  |
+| グローバル展開 |  |  |  |  |
+| 社会貢献・CSR |  |  |  |  |
+| 今後の成長戦略 |  |  |  |  |
+
+13. 総合評価と独自の視点:
+    - ${companyName}の他社には見られないユニークな強みや特徴
+    - 業界内での${companyName}の将来性や潜在的な課題
+    - ${companyName}が志望者にとって魅力的な選択肢である理由
+
+応募者の情報:
+ガクチカ: ${gakuchika ? gakuchika : "（未提供）"}
+自己PR: ${selfPR ? selfPR : "（未提供）"}
+
+この情報を踏まえ、応募者の強みと企業のニーズを効果的にマッチングさせる方法も提案してください。特に、応募者の経験や強みが${companyName}や${jobType}職にどのように活かせるかを具体的に説明してください。
+
+注意: 
+1. 全ての情報は、公開されている信頼性の高い情報源に基づいてください。不確実な情報がある場合は、その旨を明記し、可能な限り複数の情報源を参照するよう心がけてください。
+2. この分析が応募者の独自の洞察力を養うためのものであり、面接ではこれらの情報を基に自分の言葉で表現することが重要である点を強調してください。
+3. 比較分析を行う際は、単純な優劣ではなく、各企業の特徴や強みを客観的に評価し、志望者の価値観や
+
+ キャリアゴールに照らし合わせて判断することの重要性を説明してください。
+4. 最後に、この情報を基に志望者自身が更なる調査や分析を行い、自分なりの見解を持つことの重要性を強調してください。
+            `;
+
+            document.getElementById("promptText").value = prompt;
+        }
+
+        function copyPrompt() {
+            const promptText = document.getElementById("promptText");
+            promptText.select();
+            document.execCommand("copy");
+            alert("プロンプトがクリップボードにコピーされました。");
+        }
+    </script>
+</body>
+</html>

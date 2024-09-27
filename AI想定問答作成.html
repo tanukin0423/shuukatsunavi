@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI活用 想定問答作成ツール</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1{
+            color: #fafafb;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        textarea, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #646668;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #717375;
+        }
+        #result {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 10px;
+        }
+        h1 {
+        background-color: #646567; /* 灰色水色の背景 */
+        padding: 15px;
+        text-align: center; /* センタリング */
+        border-radius: 8px; /* 角を丸くする（オプション） */
+        margin-bottom: 20px; /* 下の要素との間隔を開ける */
+    }
+    </style>
+</head>
+<body>
+    <h1>AI活用 想定問答作成ツール</h1>
+    
+    <h2>Step 1: 企業情報入力</h2>
+    <textarea id="companyInfo" rows="5" placeholder="応募企業の名称、業種、応募職種を入力してください。"></textarea>
+    <button onclick="generateAIPrompt()">AIプロンプト生成</button>
+    
+    <h2>Step 2: AIプロンプト</h2>
+    <textarea id="aiPrompt" rows="10" readonly></textarea>
+    <div class="button-container">
+        <button onclick="copyToClipboard('aiPrompt')">プロンプトをコピー</button>
+    </div>
+    
+    <h2>Step 3: AI分析結果</h2>
+    <textarea id="aiResponse" rows="10" placeholder="AIの分析結果をここに貼り付けてください。"></textarea>
+    
+    <h2>Step 4: 個人情報入力</h2>
+    <textarea id="selfPR" rows="5" placeholder="自己PR"></textarea>
+    <textarea id="gakuchika" rows="5" placeholder="学生時代に力を入れたこと"></textarea>
+    <textarea id="motivation" rows="5" placeholder="志望動機"></textarea>
+    <textarea id="partTimeJob" rows="5" placeholder="アルバイト経験"></textarea>
+    <textarea id="sportsExperience" rows="5" placeholder="スポーツ経験"></textarea>
+    <textarea id="qualifications" rows="5" placeholder="保有資格等"></textarea>
+    
+    <h2>Step 5: 想定問答生成プロンプト</h2>
+    <button onclick="generateQuestionPrompt()">想定問答プロンプト生成</button>
+    <textarea id="questionPrompt" rows="10" readonly></textarea>
+    <div class="button-container">
+        <button onclick="copyToClipboard('questionPrompt')">プロンプトをコピーしてAIに想定問答の作成を依頼する</button>
+    </div>
+    
+    <h2>Step 6: 想定問答結果</h2>
+    <textarea id="result" rows="20" placeholder="AIが生成した想定問答をここに貼り付けてください。"></textarea>
+    
+    <div class="button-container">
+        <button onclick="downloadResults()">結果をダウンロード</button>
+    </div>
+
+    <script>
+        function generateAIPrompt() {
+            const companyInfo = document.getElementById('companyInfo').value;
+            const promptTemplate = `以下の企業に関する情報を詳しく調査し、結果を報告してください：
+
+${companyInfo}
+
+調査項目：
+1. 企業の特色と特徴
+2. 主な業務内容
+3. 応募職種の具体的な内容と求められるスキル
+4. 企業の就活ステップ（選考プロセス）
+5. 企業が求める人物像
+6. 企業の最近のニュースや業界での位置づけ
+7. 企業の将来性や成長戦略
+
+できるだけ具体的で詳細な情報を提供してください。各項目について、箇条書きで簡潔にまとめてください。`;
+
+            document.getElementById('aiPrompt').value = promptTemplate;
+        }
+
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            element.select();
+            document.execCommand('copy');
+            alert('プロンプトをクリップボードにコピーしました。');
+        }
+
+        function generateQuestionPrompt() {
+            const aiResponse = document.getElementById('aiResponse').value;
+            const selfPR = document.getElementById('selfPR').value;
+            const gakuchika = document.getElementById('gakuchika').value;
+            const motivation = document.getElementById('motivation').value;
+            const partTimeJob = document.getElementById('partTimeJob').value;
+            const sportsExperience = document.getElementById('sportsExperience').value;
+            const qualifications = document.getElementById('qualifications').value;
+
+            const promptTemplate = `以下の情報を基に、就職面接の想定問答を作成してください。基礎編10問、応用編10問、最終面接バージョン10問の計30問を作成し、それぞれに模範回答も付けてください。
+
+企業情報：
+${aiResponse}
+
+応募者情報：
+1. 自己PR: ${selfPR}
+2. 学生時代に力を入れたこと: ${gakuchika}
+3. 志望動機: ${motivation}
+4. アルバイト経験: ${partTimeJob}
+5. スポーツ経験: ${sportsExperience}
+6. 保有資格等: ${qualifications}
+
+質問は具体的で、この企業と応募者の情報に基づいたものにしてください。回答は簡潔でありながら、応募者の強みを活かし、企業のニーズに合致したものにしてください。`;
+
+            document.getElementById('questionPrompt').value = promptTemplate;
+        }
+
+        function downloadResults() {
+            const result = document.getElementById('result').value;
+            const blob = new Blob([result], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '想定問答結果.txt';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>

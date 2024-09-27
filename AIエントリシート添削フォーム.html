@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>エントリーシート添削依頼フォーム</title>
+<style>
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .header {
+    background-color: #808080;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 800px;
+    box-sizing: border-box;
+  }
+  .container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 800px;
+    box-sizing: border-box;
+    margin: 20px 0;
+  }
+  h1 {
+    margin: 0;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  .form-group textarea, .form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .btn-submit, .btn-copy {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+  }
+  .btn-submit:hover, .btn-copy:hover {
+    background-color: #0056b3;
+  }
+  .feedback {
+    margin-top: 20px;
+  }
+  .feedback h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #007bff;
+  }
+  .feedback p {
+    line-height: 1.6;
+  }
+  @media (max-width: 820px) {
+    .header, .container {
+      width: 95%;
+    }
+    .container {
+      padding: 15px;
+      margin: 10px 0;
+    }
+    .btn-submit, .btn-copy {
+      font-size: 14px;
+      padding: 10px;
+    }
+  }
+</style>
+
+</head>
+<body>
+
+<div class="header">
+  <h1>エントリーシート添削依頼フォーム</h1>
+</div>
+
+<div class="container">
+  <div class="form-group">
+    <label for="category">添削内容のカテゴリ</label>
+    <select id="category" name="category">
+      <option value="ガクチカ">ガクチカ（学生時代に力を入れたこと）</option>
+      <option value="自己PR">自己PR</option>
+      <option value="志望動機">志望動機</option>
+      <option value="就活軸">就活軸</option>
+      <option value="長所・短所">長所・短所</option>
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label for="request">依頼文</label>
+    <textarea id="request" name="request" placeholder="依頼文を入力してください"></textarea>
+  </div>
+  
+  <button class="btn-submit" onclick="generateFeedback()">添削を依頼する</button>
+  
+  <div class="feedback" id="feedbackSection" style="display:none;">
+    <h2>プロンプト文章</h2>
+    <div id="generatedFeedback"></div>
+    <button class="btn-copy" onclick="copyToClipboard()">コピーする</button>
+  </div>
+  
+</div>
+
+<script>
+  function generateFeedback() {
+    var category = document.getElementById('category').value;
+    var requestText = document.getElementById('request').value.trim();
+    
+    if (requestText === '') {
+      alert('依頼文を入力してください');
+      return;
+    }
+    
+    var feedbackTemplate = generateCategoryFeedback(category, requestText);
+    var generatedFeedback = document.getElementById('generatedFeedback');
+    generatedFeedback.innerHTML = feedbackTemplate;
+
+    var feedbackSection = document.getElementById('feedbackSection');
+    feedbackSection.style.display = 'block';
+  }
+
+  function generateCategoryFeedback(category, requestText) {
+    var personaText = `
+      あなたは大学で十年以上の経験を持つ就職カウンセラーです。学生のエントリーシートを添削し、内容をより良くするのが得意です。
+      学生とのコミュニケーションは親しみやすく、建設的なフィードバックを心がけています。
+      添削においては、具体性、明確さ、主体性、そして学生の強みを引き出すことを重視します。
+      学生が企業に対して最良の印象を与えられるようにサポートすることを目指しています。
+      以下のエントリーシートの内容を添削してください。カテゴリーは「${category}」です。
+      なお、以下の点についても特に注意して修正してください：
+      - 添削にあたって、修正すべき点を箇条書きで示してください。
+      - 文章がわかりにくい場合は、読みやすく簡潔にしてください。
+      - 文章表現が幼稚な場合は、成熟度を増すように改善してください。
+      - 情報が少ない場合は、適宜具体的な情報を補足し、訴求力を高めた文章としてください。
+      - また、伝えられる能力についても明確にしてください。
+      - 以下の着眼ポイントに重きをおき添削をしてください。
+    `;
+
+    var feedback = '';
+
+    switch(category) {
+      case 'ガクチカ':
+        feedback = `
+          ${personaText}
+          <p>1. タイトルを一行で表す。（例：「〇〇サークルでの活動」「〇〇学の研究」）</p>
+          <p>2. その活動や経験に取り組んだ理由や背景を簡潔に説明すること。</p>
+          <p>3. 具体的にどのような取り組みを行ったのか、詳細に述べること。</p>
+          <p>4. 取り組みの中で直面した困難や課題があれば、それを明確にすること。</p>
+          <p>5. 困難や課題に対して、どう主体的に考え、改善行動を取ったか説明すること。</p>
+          <p>6. その経験を通じて、どのような能力が身についたか、または何を学んだかを明確に述べること。</p>
+          <p>7. 得た学びや経験をどのように仕事に活かしていくか説明すること。</p>
+          <p>8. 文字数は400字程度でまとめること。</p>
+          <p>9. この内容からどんな能力を伝えているかを明確に示すこと。</p>
+          <p>依頼文は、次のとおりです。"${requestText}"</p>
+        `;
+        break;
+      case '自己PR':
+        feedback = `
+          ${personaText}
+          <p>1. あなたの強みやスキルを一行で表す。（例：「私は〇〇力が強みです。」または「〇〇で培った〇〇力です。」）</p>
+          <p>2. 自己紹介として、あなたの得意とするスキルや経験を具体的に述べてください。</p>
+          <p>3. 過去の成功事例やプロジェクトについて、何が困難や課題であったかを詳しく述べ、それらについて、どのように貢献したかを示してください。</p>
+          <p>4. 将来のキャリアゴールや志望動機を具体的に述べ、そのためにどのように強みを強化しているかを明確にしてください。</p>
+          <p>5. このスキルや経験が、どのようにして今後の仕事で活かされるか、具体的なシナリオを挙げてください。なお、文字数については、5項目目までで、400文字にまとめてください。</p>
+          <p>6. どんな能力を伝えているのかを明確に示してください。</p>
+          <p>依頼文は、次のとおりです。"${requestText}"</p>
+        `;
+        break;
+      case '志望動機':
+        feedback = `
+          ${personaText}
+          <p>1. 志望動機を一行で表す。</p>
+          <p>2. その会社を志望する理由を具体的に説明すること。</p>
+          <p>3. その会社でやりたい仕事や取り組みたいプロジェクトを述べること。</p>
+          <p>4. その会社のどの部分に魅力を感じたかを説明すること。</p>
+          <p>5. 自分のスキルや経験がその会社でどう活かせるか説明すること。</p>
+          <p>6. 文字数は400字程度でまとめること。</p>
+          <p>7. この志望動機から伝わる自身の強みや特徴を1-2つ明確に示すこと。</p>
+          <p>依頼文は、次のとおりです。"${requestText}"</p>
+        `;
+        break;
+      case '就活軸':
+        feedback = `
+          ${personaText}
+          <p>1. あなたの就活軸を一言で表現してください。（例：「私の就活軸は〇〇です。」）</p>
+          <p>2. その就活軸を選んだ理由や背景を具体的に説明してください。個人的な経験や価値観を交えると説得力が増します。</p>
+          <p>3. その就活軸に基づいて、どのような企業や職種を探しているのか明確にしてください。</p>
+          <p>4. その就活軸を実現するために、あなたがこれまでどのような努力や準備をしてきたかを述べてください。</p>
+          <p>5. その就活軸が、将来のキャリアにどのように影響し、どのような成長や貢献につながるかを説明してください。</p>
+          <p>6. その就活軸が企業にとってどのような価値をもたらすか、具体的に述べてください。</p>
+          <p>7. 文字数は400字程度でまとめてください。また、企業が共感し、高く評価できるような内容を心がけてください。</p>
+          <p>8. この就活軸から伝わる自身の強みや特徴を1-2つ明確に示してください。</p>
+          <p>依頼文は、次のとおりです。"${requestText}"</p>
+        `;
+        break;
+      case '長所・短所':
+        feedback = `
+          ${personaText}
+          <p>1. 長所と短所をそれぞれ1つずつ簡潔に述べてください。</p>
+          <p>2. 長所については、具体的なエピソードや経験を交えて説明してください。その長所がどのように形成されたか、またどのように活かされてきたかを述べてください。</p>
+          <p>3. 短所については、それを認識していることを示し、その短所を克服するためにどのような努力をしているか、または短所をどのように前向きに捉えているかを説明してください。</p>
+          <p>4. 長所と短所が、就職後の業務にどのように活かせるか、または改善できるかを具体的に述べてください。</p>
+          <p>5. 全体として、自己分析ができていることと、自己改善への意欲が感じられる内容にしてください。</p>
+          <p>6. 文字数は400字程度でまとめてください。</p>
+          <p>7. この内容から伝わる自身の強みや特徴を1-2つ明確に示してください。</p>
+          <p>依頼文は、次のとおりです。"${requestText}"</p>
+        `;
+        break;
+      default:
+        feedback = '';
+        break;
+    }
+
+    return feedback;
+  }
+
+  function copyToClipboard() {
+    var feedbackText = document.getElementById('generatedFeedback').innerText;
+    var textArea = document.createElement('textarea');
+    textArea.value = feedbackText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    alert('コピーしました');
+  }
+</script>
+
+</body>
+</html>

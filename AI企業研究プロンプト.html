@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>総合企業研究プロンプト生成</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #fbf9f9;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #959995;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #797d79;
+        }
+        #prompt {
+            width: 100%;
+            height: 200px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        h1 {
+        background-color: #646567; /* 灰色水色の背景 */
+        padding: 15px;
+        text-align: center; /* センタリング */
+        border-radius: 8px; /* 角を丸くする（オプション） */
+        margin-bottom: 20px; /* 下の要素との間隔を開ける */
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI企業研究プロンプト生成</h1>
+        <p>就活生の皆さん、この高度な企業研究ツールを使って、効率的に企業分析を行い、エントリーシート作成や面接準備に役立ててください。</p>
+        
+        <label for="company-name">企業名を入力してください:</label>
+        <input type="text" id="company-name" placeholder="企業名">
+        
+        <label for="industry">業界を選択してください:</label>
+        <select id="industry">
+            <option value="">選択してください</option>
+            <option value="IT">IT・通信</option>
+            <option value="製造">製造業</option>
+            <option value="金融">金融・保険</option>
+            <option value="小売">小売・流通</option>
+            <option value="サービス">サービス業</option>
+            <option value="建設">建設・不動産</option>
+            <option value="医療">医療・福祉</option>
+            <option value="教育">教育</option>
+            <option value="エネルギー">エネルギー・資源</option>
+            <option value="メディア">メディア・広告</option>
+        </select>
+        
+        <label for="job-type">職種を選択してください:</label>
+        <select id="job-type">
+            <option value="">選択してください</option>
+            <option value="営業">営業</option>
+            <option value="技術">技術・エンジニア</option>
+            <option value="企画">企画・マーケティング</option>
+            <option value="人事">人事・総務</option>
+            <option value="経理">経理・財務</option>
+            <option value="研究">研究開発</option>
+            <option value="デザイン">デザイン</option>
+            <option value="カスタマーサポート">カスタマーサポート</option>
+            <option value="コンサルタント">コンサルタント</option>
+            <option value="生産管理">生産管理</option>
+        </select>
+
+        <label for="education">最終学歴を選択してください:</label>
+        <select id="education">
+            <option value="">選択してください</option>
+            <option value="4年制大学文系">4年制大学文系</option>
+            <option value="4年制大学理系">4年制大学理系</option>
+            <option value="その他">その他</option>
+        </select>
+        <input type="text" id="other-education" placeholder="その他の場合は詳細を入力" style="display:none;">
+
+        <label for="experience-type">主な経験を選択してください:</label>
+        <select id="experience-type">
+            <option value="">選択してください</option>
+            <option value="飲食アルバイト">飲食のアルバイト</option>
+            <option value="コンビニアルバイト">コンビニのアルバイト</option>
+            <option value="塾講師">塾講師</option>
+            <option value="インターンシップ">インターンシップ</option>
+            <option value="サークル活動">サークル活動</option>
+            <option value="ボランティア">ボランティア活動</option>
+            <option value="留学">留学経験</option>
+            <option value="研究活動">研究活動</option>
+            <option value="その他">その他</option>
+        </select>
+        <input type="text" id="other-education" placeholder="その他の場合は詳細を入力" style="display:none;">
+
+        <label for="experience">関連する経験や資格があれば入力してください:</label>
+        <textarea id="experience" placeholder="インターンシップ経験、取得資格など"></textarea>
+        
+        <button onclick="generatePrompt()">プロンプトを生成する</button>
+        <textarea id="prompt" readonly></textarea>
+        <button onclick="copyPrompt()">プロンプトをコピーしてAIで調べる</button>
+    </div>
+
+    <script>
+        document.getElementById('education').addEventListener('change', function() {
+            var otherEducation = document.getElementById('other-education');
+            if (this.value === 'その他') {
+                otherEducation.style.display = 'block';
+            } else {
+                otherEducation.style.display = 'none';
+            }
+        });
+
+        function generatePrompt() {
+            var companyName = document.getElementById("company-name").value;
+            var industry = document.getElementById("industry").value;
+            var jobType = document.getElementById("job-type").value;
+            var education = document.getElementById("education").value;
+            var experienceType = document.getElementById("experience-type").value;
+            var experience = document.getElementById("experience").value;
+
+            if (education === 'その他') {
+                education = document.getElementById("other-education").value;
+            }
+
+            if (companyName && industry && jobType && education && experienceType) {
+                var prompt = `あなたは、企業研究のスペシャリストであり、就活アドバイザーです。以下の情報に基づいて、詳細な企業分析と具体的な自己PR、ガクチカ、志望動機の文例を作成してください。
+
+企業名: ${companyName}
+業界: ${industry}
+職種: ${jobType}
+最終学歴: ${education}
+主な経験タイプ: ${experienceType}
+関連経験・資格: ${experience}
+
+1. 企業概要
+   - 企業の歴史、ミッション、ビジョン
+   - 主要製品・サービス
+   - 市場シェアや業界での位置づけ
+
+2. 業界動向と企業の取り組み
+   - ${industry}業界の最新トレンドと課題
+   - ${companyName}の業界内での戦略や独自の取り組み
+
+3. 競合他社分析
+   - 主要な競合他社とその特徴
+   - ${companyName}の競争優位性
+
+4. ${jobType}職の具体的な仕事内容
+   - 日常的な業務内容
+   - プロジェクトや取り組みの例
+   - 必要なスキルや知識
+
+5. キャリアパス
+   - ${jobType}職の典型的なキャリアパス
+   - 社内でのステップアップの機会
+
+6. 求める人物像
+   - ${jobType}職に適した資質や能力
+   - ${companyName}が重視する価値観
+
+7. ESGへの取り組み
+   - 環境保護活動
+   - 社会貢献活動
+   - コーポレートガバナンスの取り組み
+
+8. インターンシッププログラム
+   - 提供されているインターンシップの種類
+   - インターンシップの内容と期間
+
+9. 採用プロセスとスケジュール
+   - 選考ステップの詳細
+   - 各ステップの時期
+
+10. 研修制度
+    - 新入社員研修の内容
+    - ${jobType}職向けの専門研修プログラム
+
+11. ワークライフバランスと福利厚生
+    - 労働時間や休暇制度
+    - 特徴的な福利厚生制度
+
+12. 業界用語解説
+    - ${industry}業界特有の専門用語や略語の説明
+
+13. 自己PR作成のポイント
+    - ${jobType}職に求められるスキルや経験を強調した自己PR例
+
+14. ガクチカのポイント
+    - ${jobType}職で求められる能力と結びつけたガクチカ例
+
+15. 志望動機作成のポイント
+    - ${industry}業界の動向や${companyName}の強みを踏まえた志望動機例
+
+16. 面接対策
+    - ${industry}業界・${jobType}職によくある面接質問とその回答例
+
+17. ${education}の学生向けアドバイス [省略...]
+
+18. 具体的な自己PR文例 (400字程度):
+    - ${jobType}職に求められるスキルや経験を強調し、${experienceType}での経験を活かした具体的な自己PR文を作成してください。
+    - ${companyName}の求める人物像や企業理念に合致するよう、自身の強みや成長過程を詳細に描写してください。
+    - 具体的なエピソードを2つ以上含め、それぞれのエピソードから得られた学びや成長を明確に示してください。
+    - 自己PRの構成は、「導入→エピソード1→エピソード2→まとめ」の形式で、論理的かつ説得力のある内容にしてください。
+    - ${companyName}での活躍イメージを具体的に述べ、自身の将来vision確を示してください。
+
+19. 具体的なガクチカ文例 (400字程度):
+    - ${experienceType}での経験を${jobType}職で求められる能力と結びつけた具体的なガクチカ文を作成してください。
+    - 経験の詳細、直面した課題、取り組み方、得られた具体的な成果を、数値や具体例を交えて記述してください。
+    - その経験から得られた学びや成長を、${companyName}の業務内容や企業理念と関連付けて説明してください。
+    - 課題解決のプロセスを詳細に描写し、そこで発揮したリーダーシップや創造性、協調性などの能力を具体的に示してください。
+    - この経験が${companyName}でどのように活かせるか、具体的な業務や将来の目標と結びつけて説明してください。
+
+20. 具体的な志望動機文例 (500字程度):
+    - ${industry}業界の動向や${companyName}の強み、課題を踏まえ、${experienceType}での経験や学びを活かした具体的な志望動機文を作成してください。
+    - ${companyName}の企業理念、事業内容、市場での位置づけについて、自身の調査結果を交えて言及してください。
+    - 自身のキャリアプランと${companyName}での具体的な活躍イメージを、5年後、10年後のvisonを含めて詳細に述べてください。
+    - ${companyName}が直面している課題や、業界の将来展望について自身の見解を示し、それに対して自分がどのように貢献できるかを具体的に説明してください。
+    - ${experienceType}での経験や学びが、どのように${companyName}での業務に活かせるか、具体的な例を挙げて説明してください。
+    - 志望動機の構成は、「業界・企業分析→自己分析・適性→貢献プラン→結論」の形式で、論理的かつ説得力のある内容にしてください。
+
+以上の情報を詳細に提供し、特に自己PR、ガクチカ、志望動機の文例は具体的かつ個別性の高いものを作成してください。これらの文例は、就活生が実際に使用できる質の高いものを目指し、エントリーシートの審査を通過できるレベルの内容にしてください。`;
+
+                document.getElementById("prompt").value = prompt;
+            } else {
+                document.getElementById("prompt").value = '全ての項目を入力・選択してください。';
+            }
+        }
+
+        function copyPrompt() {
+            var promptText = document.getElementById("prompt");
+            promptText.select();
+            document.execCommand("copy");
+            alert("プロンプトをクリップボードにコピーしました。");
+        }
+    </script>
+</body>
+</html>
